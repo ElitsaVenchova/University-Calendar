@@ -1,4 +1,4 @@
-class NomGender {
+class NomDegrees {
 	private $id;
 	private $shortName;
 	private $name;

@@ -1,4 +1,4 @@
-class NomCathedral {
+class NomCathedrals {
 	private $id;
 	private $shortName;
 	private $name;

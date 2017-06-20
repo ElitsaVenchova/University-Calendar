@@ -18,7 +18,7 @@ if()
 ?>
 <html>
 	<head>
-		<title>Степени на образование</title>
+		<title>Г‘ГІГҐГЇГҐГ­ГЁ Г­Г  Г®ГЎГ°Г Г§Г®ГўГ Г­ГЁГҐ</title>
 	</head>
 	<body>
 		<form name="nom_degrees_form">
@@ -28,24 +28,24 @@ if()
 			<input type="text" name="description" value="<?= $currDegrees->getDescription()?>"/>
 			<select name="isActive" required="Y">
 				<option></option>
-				<option value='Y' <?= $currDegrees->getIsActive() != null && strcmp ( $currDegrees->getIsActive() , "Y" ) ? "selected"?>>Да</option>
-				<option value='N' <?= $currDegrees->getIsActive() != null && strcmp ( $currDegrees->getIsActive() , "N" ) ? "selected"?>>Не</option>
+				<option value='Y' <?= $currDegrees->getIsActive() != null && strcmp ( $currDegrees->getIsActive() , "Y" ) ? "selected"?>>Г„Г </option>
+				<option value='N' <?= $currDegrees->getIsActive() != null && strcmp ( $currDegrees->getIsActive() , "N" ) ? "selected"?>>ГЌГҐ</option>
 			</select>
 			<div class="buttons">
-            	<button type="button" name="Search" value="Търси" onclick="searchItem();">Търси</button> 
-            	<button type="button" name="Clean" value="Изчисти" onclick="cleanItem();">Изчисти</button> 
-            	<button type="button" class="right" name="Add" value="Добави" onclick="doAction(this.form, '<c:url value='/registers/addActivity'/>');">Добави</button> 
-            	<button type="button" class="right" name="Remove" value="Изтрий" onclick="removeItem();">Изтрий</button>
-				<button type="button" class="right" name="Update" value="Промени" onclick="doAction(this.form, '<c:url value='/registers/updateActivity'/>');">Промени</button>
+            	<button type="button" name="Search" value="Г’ГєГ°Г±ГЁ" onclick="searchItem();">Г’ГєГ°Г±ГЁ</button> 
+            	<button type="button" name="Clean" value="Г€Г§Г·ГЁГ±ГІГЁ" onclick="cleanItem();">Г€Г§Г·ГЁГ±ГІГЁ</button> 
+            	<button type="button" class="right" name="Add" value="Г„Г®ГЎГ ГўГЁ" onclick="doAction(this.form, '<c:url value='/registers/addActivity'/>');">Г„Г®ГЎГ ГўГЁ</button> 
+            	<button type="button" class="right" name="Remove" value="Г€Г§ГІГ°ГЁГ©" onclick="removeItem();">Г€Г§ГІГ°ГЁГ©</button>
+				<button type="button" class="right" name="Update" value="ГЏГ°Г®Г¬ГҐГ­ГЁ" onclick="doAction(this.form, '<c:url value='/registers/updateActivity'/>');">ГЏГ°Г®Г¬ГҐГ­ГЁ</button>
             </div>
 			<table class="dataset">
 				<thead>
 					<tr>
-						<th><a href="#" onclick="setOrder('id')">№</a></th>
-                        <th><a href="#" onclick="setOrder('code')">Код</a></th>
-                        <th><a href="#" onclick="setOrder('code')">Име</a></th>
-                        <th><a href="#" onclick="setOrder('descr')">Описание</a></th>
-                        <th><a href="#" onclick="setOrder('is_active')">Активност</a></th>
+						<th><a href="#" onclick="setOrder('id')">В№</a></th>
+                        <th><a href="#" onclick="setOrder('short_name')">ГЉГ®Г¤</a></th>
+                        <th><a href="#" onclick="setOrder('name')">Г€Г¬ГҐ</a></th>
+                        <th><a href="#" onclick="setOrder('description')">ГЋГЇГЁГ±Г Г­ГЁГҐ</a></th>
+                        <th><a href="#" onclick="setOrder('is_active')">ГЂГЄГІГЁГўГ­Г®Г±ГІ</a></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -54,7 +54,7 @@ if()
 						<td><?= $val->getShortName()) ?> </td>
 						<td><?= $val->getName()) ?> </td>
 						<td><?= $val->getDescription()) ?> </td>
-						<td><?= $val->getIsActive() != null && strcmp ( $val->getIsActive() , "Y" ) ? "Да"  : "Не"?> </td>
+						<td><?= $val->getIsActive() != null && strcmp ( $val->getIsActive() , "Y" ) ? "Г„Г "  : "ГЌГҐ"?> </td>
 					<?php endforeach; ?>
 				</tbody>
 			</table>

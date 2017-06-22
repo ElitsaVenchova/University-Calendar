@@ -1,3 +1,4 @@
+<?php
 class Grades {
 	private $id;
 	private $year;
@@ -8,16 +9,6 @@ class Grades {
 	private $student;
 	
 	function __construct() {}
-	
-	function __construct($id, $year, $courseId, $sessionTypeId, $grade, $credits, $student) {
-		$this->id = $id;
-		$this->year = $year;
-		$this->courseId = $courseId;
-		$this->sessionTypeId = $sessionTypeId;
-		$this->grade = $grade;
-		$this->credits = $credits;
-		$this->student = $student;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -75,3 +66,4 @@ class Grades {
 		$this->student = $student;
 	}
 }
+?>

@@ -1,3 +1,4 @@
+<?php
 class NomSessionTypes {
 	private $id;
 	private $shortName;
@@ -6,14 +7,6 @@ class NomSessionTypes {
 	private $isActive;
 	
 	function __construct() {}
-	
-	function __construct($id, $shortName, $name, $description, $isActive) {
-		$this->id = $id;
-		$this->shortName = $shortName;
-		$this->name = $name;
-		$this->description = $description;
-		$this->isActive = $isActive;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -54,4 +47,9 @@ class NomSessionTypes {
 	public function setIsActive($isActive){
 		$this->isActive = $isActive;
 	}
+	
+	public function getIsActiveTxt(){
+		return $this->isActive != null && strcmp ( $this->isActive , "Y" ) == 0 ? "Да" : "Не";
+	}
 }
+?>

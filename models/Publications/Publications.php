@@ -1,3 +1,4 @@
+<?php
 class Publications {
 	private $id;
 	private $title;
@@ -5,13 +6,6 @@ class Publications {
 	private $publucation;
 	
 	function __construct() {}
-	
-	function __construct($id, $title, $year, $publucation) {
-		$this->id = $id;
-		$this->title = $title;
-		$this->year = $year;
-		$this->publucation = $publucation;
-	}
 	
 		public function getId(){
 		return $this->id;
@@ -45,3 +39,4 @@ class Publications {
 		$this->publucation = $publucation;
 	}
 }
+?>

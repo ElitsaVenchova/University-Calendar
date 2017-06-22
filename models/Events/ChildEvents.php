@@ -1,3 +1,4 @@
+<?php
 class ChildEvents {
 	private $id;
 	private $masterId;
@@ -9,17 +10,6 @@ class ChildEvents {
 	private $description;
 	
 	function __construct() {}
-	
-	function __construct($id, $masterId, $roomId, $classDate, $fromHour, $toHour, $title, $description) {
-		$this->id = $id;
-		$this->masterId = $masterId;
-		$this->roomId = $roomId;
-		$this->classDate = $classDate;
-		$this->fromHour = $fromHour;
-		$this->toHour = $toHour;
-		$this->title = $title;
-		$this->description = $description;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -85,3 +75,4 @@ class ChildEvents {
 		$this->description = $description;
 	}
 }
+?>

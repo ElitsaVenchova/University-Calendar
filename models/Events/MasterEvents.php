@@ -1,3 +1,4 @@
+<?php
 class MasterEvents {
 	private $id;
 	private $creater;
@@ -6,14 +7,6 @@ class MasterEvents {
 	private $courseId;
 	
 	function __construct() {}
-	
-	function __construct($id, $creater, $eventType, $isActive, $courseId) {
-		$this->id = $id;
-		$this->creater = $creater;
-		$this->eventType = $eventType;
-		$this->isActive = $isActive;
-		$this->courseId = $courseId;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -55,3 +48,4 @@ class MasterEvents {
 		$this->courseId = $courseId;
 	}
 }
+?>

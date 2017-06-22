@@ -1,5 +1,7 @@
+<?php
 class NomStudyPrograms {
 	private $id;
+	private $degreeId;
 	private $shortName;
 	private $name;
 	private $description;
@@ -7,20 +9,20 @@ class NomStudyPrograms {
 	
 	function __construct() {}
 	
-	function __construct($id, $shortName, $name, $description, $isActive) {
-		$this->id = $id;
-		$this->shortName = $shortName;
-		$this->name = $name;
-		$this->description = $description;
-		$this->isActive = $isActive;
-	}
-	
 	public function getId(){
 		return $this->id;
 	}
 
 	public function setId($id){
 		$this->id = $id;
+	}
+	
+	public function getDegreeId(){
+		return $this->degreeId;
+	}
+
+	public function setDegreeId($degreeId){
+		$this->degreeId = $degreeId;
 	}
 
 	public function getShortName(){
@@ -54,4 +56,9 @@ class NomStudyPrograms {
 	public function setIsActive($isActive){
 		$this->isActive = $isActive;
 	}
+	
+	public function getIsActiveTxt(){
+		return $this->isActive != null && strcmp ( $this->isActive , "Y" ) == 0 ? "Да" : "Не";
+	}
 }
+?>

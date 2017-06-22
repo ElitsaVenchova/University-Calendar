@@ -1,3 +1,4 @@
+<?php
 class EventViewUsers {
 	private $id;
 	private $type;
@@ -6,14 +7,6 @@ class EventViewUsers {
 	private $direction;
 	
 	function __construct() {}
-	
-	function __construct($id, $type, $masterEventId, $username, $direction) {
-		$this->id = $id;
-		$this->type = $type;
-		$this->masterEventId = $masterEventId;
-		$this->username = $username;
-		$this->direction = $direction;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -55,3 +48,4 @@ class EventViewUsers {
 		$this->direction = $direction;
 	}
 }
+?>

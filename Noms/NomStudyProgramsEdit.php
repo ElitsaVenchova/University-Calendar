@@ -1,7 +1,7 @@
 <?php
-require_once('..\models\Noms\NomStudyPrograms.php');
-include '..\models\Noms\NomDegrees.php';
-include '..\connection.php';
+require_once('..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomStudyPrograms.php');
+include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php';
+include '..'.DIRECTORY_SEPARATOR.'header.php';
 
 function save($conn, $post){
 	if($post['id'] != null && !empty($post['id'])) {
@@ -92,6 +92,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
 					var ok = vallidateForm(document.forms[0]);
                     if (ok)
                     {
+						document.forms[0].elements['update'].value = true;
 						document.forms[0].submit();
 					}
 				}

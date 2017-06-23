@@ -1,7 +1,9 @@
 <?php
-include '..\models\Noms\NomDegrees.php';
-include '..\connection.php';
-
+include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php';
+include '..'.DIRECTORY_SEPARATOR.'header.php';
+/**
+ * Проверка по името на колоната дали, тя е сортирана и ако да, то се връща съответния символ за посоката.
+ */
 function isSortColumn($currCol, $selectedCol, $direction) {
 	if ($selectedCol != null && strcmp($selectedCol,$currCol) == 0) {
 		if ($direction != null &&  strcmp($direction,"desc") == 0) {
@@ -13,6 +15,9 @@ function isSortColumn($currCol, $selectedCol, $direction) {
 	return "";
 }
 
+/**
+ * Връща order by клаузата, което ще се използва в заявката
+ */
 function order($selectedCol){
 	if(isset($selectedCol) && !empty($selectedCol)){
 		return " order by ".$selectedCol." ";
@@ -21,16 +26,14 @@ function order($selectedCol){
 	}
 }
 
-$selectedCol="";//кода на колоната
-$selectedColName="";//Реалното име на колоната(когато имаме join и име от други таблици)
-$joinOrderClause="";//Join-ати таблици, ако е необходимо
-$direction="";//посока на сортирането
+$selectedCol=isset($_SESSION['selectedCol']) ? $_SESSION['selectedCol'] : "";//кода на колоната
+$direction=isset($_SESSION['direction']) ? $_SESSION['direction'] : "";//посока на сортирането
 
 //Определяне на колона и посоката на сортирането
 if(isset($_GET) && isset($_GET['sortColName']) && !empty($_GET['sortColName'])){
-	if ($selectedCol != null && strcmp($selectedCol,orderByColumnName) == 0) {
+	if ($selectedCol != null && strcmp($selectedCol,$_GET['sortColName']) == 0) {
 		//Сменяме само посоката на сортиране
-		if (strcmp($direction,"asc")) {
+		if (strcmp($direction,"asc") == 0) {
 			$direction = "desc";
 		} else if(strcmp($direction,"desc") == 0){
 			$selectedCol="";
@@ -42,8 +45,9 @@ if(isset($_GET) && isset($_GET['sortColName']) && !empty($_GET['sortColName'])){
 		$selectedCol=$_GET['sortColName'];
 		$direction = "asc";
 	}
-	$selectedColName = $selectedCol;
 }
+$_SESSION['selectedCol']=$selectedCol;
+$_SESSION['direction']=$direction;
 
 $sql = "SELECT nd.id, nd.short_name, nd.name, nd.description, nd.is_active FROM NOM_DEGREES nd ".order($selectedCol).$direction;
 $result = $conn->query($sql);
@@ -81,7 +85,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 			<table class="dataset">
 				<thead>
 					<tr>
-						<th>&nbsp;</th>
+						<th><a href="NomDegreesEdit.php"><img src="../style/plus.png" title="Нов запис"  style="border: 0" height="16" width="16"></a></th>
 						<th><a href="#" onclick="setOrder('id')">№</a> <?= isSortColumn('id', $selectedCol, $direction)?></th>
                         <th><a href="#" onclick="setOrder('short_name')">Код</a> <?= isSortColumn('short_name', $selectedCol, $direction)?></th>
                         <th><a href="#" onclick="setOrder('name')">Име<?= isSortColumn('name', $selectedCol, $direction)?></a></th>

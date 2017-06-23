@@ -1,39 +1,58 @@
 <?php
-include '..\models\Noms\NomStudyPrograms.php';
-include '..\models\Noms\NomDegrees.php';
-include '..\connection.php';
+include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomStudyPrograms.php';
+include '..'.DIRECTORY_SEPARATOR.'models\Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php';
+include '..'.DIRECTORY_SEPARATOR.'header.php';
 
+/**
+ * Проверка по името на колоната дали, тя е сортирана и ако да, то се връща съответния символ за посоката.
+ */
 function isSortColumn($currCol, $selectedCol, $direction) {
-	if ($selectedCol != null && strcmp($selectedCol,$currCol)) {
-		if ($direction != null &&  strcmp($direction,"desc")) {
+	if ($selectedCol != null && strcmp($selectedCol,$currCol) == 0) {
+		if ($direction != null &&  strcmp($direction,"desc") == 0) {
 			return "&#9650;";
-		} else if ($direction != null && strcmp(direction,"asc")) {
+		} else if ($direction != null && strcmp($direction,"asc") == 0) {
 			return "&#9660;";
 		}
 	}
 	return "";
 }
 
+/**
+ * Връща order by клаузата, което ще се използва в заявката
+ */
 function order($selectedCol){
 	if(isset($selectedCol) && !empty($selectedCol)){
-		if(strcmp($selectedCol, "degree_id")){
-			" order by nd.name "
-		} else {
-			return " order by ".$selectedCol." ";
-		}
+		return " order by ".$selectedCol." ";
 	} else {
 		return " order by nsp.id ";
 	}
 }
 
-function joins($selectedCol){
-	if(isset($selectedCol) && strcmp($selectedCol, "degree_id")){
-		return " join NOM_DEGREES nd on nd.id = nsp.degree_id "
+$selectedCol=isset($_SESSION['selectedCol']) ? $_SESSION['selectedCol'] : "";//кода на колоната
+$direction=isset($_SESSION['direction']) ? $_SESSION['direction'] : "";//посока на сортирането
+
+//Определяне на колона и посоката на сортирането
+if(isset($_GET) && isset($_GET['sortColName']) && !empty($_GET['sortColName'])){
+	if ($selectedCol != null && strcmp($selectedCol,$_GET['sortColName']) == 0) {
+		//Сменяме само посоката на сортиране
+		if (strcmp($direction,"asc") == 0) {
+			$direction = "desc";
+		} else if(strcmp($direction,"desc") == 0){
+			$selectedCol="";
+			$direction = "";
+		} else {
+			$direction = "asc";
+		}
+	} else {
+		$selectedCol=$_GET['sortColName'];
+		$direction = "asc";
 	}
-	return "";
 }
 
-$sql = "SELECT nsp.id, nsp.degree_id, nsp.short_name, nsp.name, nsp.description, nsp.is_active, nd.name degree_name FROM NOM_STUDY_PROGRAMS nsp JOIN NOM_DEGREES nd ON  nd.id = nsp.degree_id".order($selectedCol).$direction;
+$_SESSION['selectedCol']=$selectedCol;
+$_SESSION['direction']=$direction;
+
+$sql = "SELECT nsp.id, nsp.degree_id, nsp.short_name, nsp.name, nsp.description, nsp.is_active, nd.name degree_name FROM NOM_STUDY_PROGRAMS nsp JOIN NOM_DEGREES nd ON  nd.id = nsp.degree_id ".order($selectedCol).$direction;
 $result = $conn->query($sql);
 $nomStudyProgramsList = array();
 while ($row = $result->fetch(PDO::FETCH_ASSOC))
@@ -76,7 +95,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
 			<table class="dataset">
 				<thead>
 					<tr>
-						<th>&nbsp;</th>
+						<th><a href="nomStudyProgramsEdit.php"><img src="../style/plus.png" title="Нов запис"  style="border: 0" height="16" width="16"></a></th>
 						<th><a href="#" onclick="setOrder('id')">№ <?= isSortColumn('id', $selectedCol, $direction)?></a></th>
 						<th><a href="#" onclick="setOrder('degree_id')">Степен на образование <?= isSortColumn('degree_id', $selectedCol, $direction)?></a></th>
                         <th><a href="#" onclick="setOrder('short_name')">Код <?= isSortColumn('short_name', $selectedCol, $direction)?></a></th>

@@ -24,6 +24,7 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
 // Сесията ще стой 1 час
 $_SESSION['discard_after'] = $now + 3600;
 //Създаване на променливата за connection към базата, за да може да се използва наготово
-$conn = $_SESSION['conn'];
+//TODO: Това трябва да се откоментира когато горното се махне
+//$conn = $_SESSION['conn'];
 
 ?>

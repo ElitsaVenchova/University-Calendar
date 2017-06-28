@@ -1,13 +1,13 @@
 <?php
-require_once('..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php');
+require_once('..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomRoomTypes.php');
 include '..'.DIRECTORY_SEPARATOR.'header.php';
 
 function save($conn, $post){
 	if($post['id'] != null && !empty($post['id'])) {
-		$stmt = $conn->prepare("UPDATE NOM_DEGREES SET short_name = ?, name = ?, description = ?, is_active = ? WHERE ID = ?");
+		$stmt = $conn->prepare("UPDATE NOM_ROOM_TYPES SET short_name = ?, name = ?, description = ?, is_active = ? WHERE ID = ?");
 		$stmt->execute(array($post['shortName'], $post['name'], $post['description'], $post['isActive'], $post['id']));
 	} else {
-		$stmt = $conn->prepare("INSERT INTO NOM_DEGREES (short_name, name, description, is_active) VALUES (?,?,?,?)");
+		$stmt = $conn->prepare("INSERT INTO NOM_ROOM_TYPES (short_name, name, description, is_active) VALUES (?,?,?,?)");
 		$stmt->execute(array($post['shortName'], $post['name'], $post['description'], $post['isActive']));
 	}
 	return "Записа беше редактиран успешно!";
@@ -15,23 +15,23 @@ function save($conn, $post){
 
 if(isset($_POST) && isset($_POST['update']) && !empty($_POST['update'])){
 	$msg = save($conn, $_POST);
-	$degreeId = $_POST['id'];
-} else if(isset($_GET) && isset($_GET['degreeId']) && !empty($_GET['degreeId'])){
-	$degreeId = $_GET['degreeId'];
+	$roomTypeId = $_POST['id'];
+} else if(isset($_GET) && isset($_GET['roomTypeId']) && !empty($_GET['roomTypeId'])){
+	$roomTypeId = $_GET['roomTypeId'];
 }
 
-$currDegree = new NomDegrees();
-if(isset($degreeId)) {
-	$sql = "SELECT id, short_name, nd.name, nd.description, nd.is_active FROM NOM_DEGREES nd where nd.id = ?";
+$currRoomType = new NomRoomTypes();
+if(isset($roomTypeId)) {
+	$sql = "SELECT id, short_name, nrt.name, nrt.description, nrt.is_active FROM NOM_ROOM_TYPES nrt where nrt.id = ?";
 	$stmt = $conn->prepare($sql);
-	if ($stmt->execute(array($degreeId))) { 
+	if ($stmt->execute(array($roomTypeId))) { 
 		while ($row = $stmt->fetch()) {
-			$currDegree = new NomDegrees();
-			$currDegree->setId($row['id']);
-			$currDegree->setShortName($row['short_name']);
-			$currDegree->setName($row['name']);
-			$currDegree->setDescription($row['description']);
-			$currDegree->setIsActive($row['is_active']);
+			$currRoomType = new NomRoomTypes();
+			$currRoomType->setId($row['id']);
+			$currRoomType->setShortName($row['short_name']);
+			$currRoomType->setName($row['name']);
+			$currRoomType->setDescription($row['description']);
+			$currRoomType->setIsActive($row['is_active']);
 		}
 	}
 }
@@ -45,7 +45,7 @@ if(isset($degreeId)) {
 		<script type="text/JavaScript" src="../scripts/UserJQueryMessageStyles.js"></script>
 		<script type="text/JavaScript" src="../scripts/DatePicker.js"></script>
 		<script type="text/javascript" src="../scripts/jquery-ui-1.12.1/jquery-ui.js"></script>
-		<title>Редакция - Степен на образование</title>
+		<title>Редакция - Тип стая</title>
 	</head>
 	<body onKeyPress="return checkSubmit(event)">
 		<?php if(isset($msg)): ?>
@@ -54,13 +54,13 @@ if(isset($degreeId)) {
 			</div>
 			<?php $msg = null;?>
 		<?php endif; ?> 
-		<form name="nom_degrees_edit_form" method="post">
+		<form name="nom_room_type_edit_form" method="post">
 			<input type="hidden" name="update"/>
 			<script>
                 function checkSubmit(e)
                 {
-                    var v = document.forms['nom_degrees_edit_form'];
-                    if (e && e.keyCode === 13)
+                    var v = document.forms['nom_room_type_edit_form'];
+                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey) {
                     {
                         updateRow();
                     }
@@ -84,14 +84,14 @@ if(isset($degreeId)) {
 			</script>
 			<div class="edit" id="userInfo">
 				<div class="edit_form">
-					<label>№ <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currDegree->getId()?>"/> </label>
-					<label>Код <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currDegree->getShortName()?>"/> </label>
-					<label>Име <input type="text" name="name" id="name" value="<?= $currDegree->getName()?>"/> </label>
-					<label>Описание <input type="text" name="description" id="description" value="<?= $currDegree->getDescription()?>"/> </label>
+					<label>№ <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currRoomType->getId()?>"/> </label>
+					<label>Код <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currRoomType->getShortName()?>"/> </label>
+					<label>Име <input type="text" name="name" id="name" value="<?= $currRoomType->getName()?>"/> </label>
+					<label>Описание <input type="text" name="description" id="description" value="<?= $currRoomType->getDescription()?>"/> </label>
 					<label>Активност <select name="isActive" id="isActive" required="Y">
 						<option></option>
-						<option value='Y' <?= $currDegree->getIsActive() != null && strcmp ($currDegree->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
-						<option value='N' <?= $currDegree->getIsActive() != null && strcmp ( $currDegree->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>
+						<option value='Y' <?= $currRoomType->getIsActive() != null && strcmp ($currRoomType->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
+						<option value='N' <?= $currRoomType->getIsActive() != null && strcmp ( $currRoomType->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>
 					</select> </label>
 				</div>
 				<div class="buttons">

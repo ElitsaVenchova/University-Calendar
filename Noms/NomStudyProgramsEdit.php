@@ -1,5 +1,4 @@
 <?php
-require_once('..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomStudyPrograms.php');
 include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php';
 include '..'.DIRECTORY_SEPARATOR.'header.php';
 
@@ -81,7 +80,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
 			<script>
                 function checkSubmit(e)
                 {
-                    var v = document.forms['nom_bgn_bank_types'];
+                    var v = document.forms['nom_degrees_edit_form'];
                     if (e && e.keyCode === 13)
                     {
                         updateRow();

@@ -4,10 +4,10 @@ include '..'.DIRECTORY_SEPARATOR.'header.php';
 
 function save($conn, $post){
 	if($post['id'] != null && !empty($post['id'])) {
-		$stmt = $conn->prepare("UPDATE NOM_ROOM_TYPES SET short_name = ?, name = ?, description = ?, is_active = ? WHERE ID = ?");
+		$stmt = $conn->prepare("UPDATE nom_Room_types SET short_name = ?, name = ?, description = ?, is_active = ? WHERE ID = ?");
 		$stmt->execute(array($post['shortName'], $post['name'], $post['description'], $post['isActive'], $post['id']));
 	} else {
-		$stmt = $conn->prepare("INSERT INTO NOM_ROOM_TYPES (short_name, name, description, is_active) VALUES (?,?,?,?)");
+		$stmt = $conn->prepare("INSERT INTO nom_Room_types (short_name, name, description, is_active) VALUES (?,?,?,?)");
 		$stmt->execute(array($post['shortName'], $post['name'], $post['description'], $post['isActive']));
 	}
 	return "Записа беше редактиран успешно!";
@@ -22,7 +22,7 @@ if(isset($_POST) && isset($_POST['update']) && !empty($_POST['update'])){
 
 $currRoomType = new NomRoomTypes();
 if(isset($roomTypeId)) {
-	$sql = "SELECT id, short_name, nrt.name, nrt.description, nrt.is_active FROM NOM_ROOM_TYPES nrt where nrt.id = ?";
+	$sql = "SELECT id, short_name, nrt.name, nrt.description, nrt.is_active FROM nom_Room_types nrt where nrt.id = ?";
 	$stmt = $conn->prepare($sql);
 	if ($stmt->execute(array($roomTypeId))) { 
 		while ($row = $stmt->fetch()) {
@@ -60,7 +60,7 @@ if(isset($roomTypeId)) {
                 function checkSubmit(e)
                 {
                     var v = document.forms['nom_room_type_edit_form'];
-                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey) {
+                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey)
                     {
                         updateRow();
                     }
@@ -84,11 +84,11 @@ if(isset($roomTypeId)) {
 			</script>
 			<div class="edit" id="userInfo">
 				<div class="edit_form">
-					<label>№ <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currRoomType->getId()?>"/> </label>
-					<label>Код <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currRoomType->getShortName()?>"/> </label>
+					<label>№<span class="required">*</span> <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currRoomType->getId()?>"/> </label>
+					<label>Код <i<span class="required">*</span>nput type="text" required="Y" name="shortName" id="shortName" value="<?= $currRoomType->getShortName()?>"/> </label>
 					<label>Име <input type="text" name="name" id="name" value="<?= $currRoomType->getName()?>"/> </label>
 					<label>Описание <input type="text" name="description" id="description" value="<?= $currRoomType->getDescription()?>"/> </label>
-					<label>Активност <select name="isActive" id="isActive" required="Y">
+					<label>Активност<span class="required">*</span> <select name="isActive" id="isActive" required="Y">
 						<option></option>
 						<option value='Y' <?= $currRoomType->getIsActive() != null && strcmp ($currRoomType->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
 						<option value='N' <?= $currRoomType->getIsActive() != null && strcmp ( $currRoomType->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>

@@ -60,7 +60,7 @@ if(isset($degreeId)) {
                 function checkSubmit(e)
                 {
                     var v = document.forms['nom_degrees_edit_form'];
-                    if (e && e.keyCode === 13)
+                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey)
                     {
                         updateRow();
                     }
@@ -84,11 +84,11 @@ if(isset($degreeId)) {
 			</script>
 			<div class="edit" id="userInfo">
 				<div class="edit_form">
-					<label>№ <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currDegree->getId()?>"/> </label>
-					<label>Код <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currDegree->getShortName()?>"/> </label>
+					<label>№<span class="required">*</span> <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currDegree->getId()?>"/> </label>
+					<label>Код<span class="required">*</span> <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currDegree->getShortName()?>"/> </label>
 					<label>Име <input type="text" name="name" id="name" value="<?= $currDegree->getName()?>"/> </label>
 					<label>Описание <input type="text" name="description" id="description" value="<?= $currDegree->getDescription()?>"/> </label>
-					<label>Активност <select name="isActive" id="isActive" required="Y">
+					<label>Активност<span class="required">*</span> <select name="isActive" id="isActive" required="Y">
 						<option></option>
 						<option value='Y' <?= $currDegree->getIsActive() != null && strcmp ($currDegree->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
 						<option value='N' <?= $currDegree->getIsActive() != null && strcmp ( $currDegree->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>

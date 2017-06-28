@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS nom_Semester_types(
 	CONSTRAINT nom_Semester_types_name_uk UNIQUE(name)
 ) COMMENT = 'Номенклатура на типовете семестри (летен, зимен, всеки семестер и т.н.)';
 
-CREATE TABLE IF NOT EXISTS nom_Session_typesHide(
+CREATE TABLE IF NOT EXISTS nom_Session_types(
 	id MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'UNIQUE ID',
 	short_name VARCHAR (80) NOT NULL COMMENT 'Кратко наименование',
 	name VARCHAR (255) NOT NULL COMMENT 'Пълно наименование',
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS News(
 	FOREIGN KEY News_publisher_fk (publisher) REFERENCES sys_users(username)
 ) COMMENT = 'Новини';
 
-CREATE TABLE IF NOT EXISTS nom_Room_typesHide(
+CREATE TABLE IF NOT EXISTS nom_Room_types(
 	id MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'UNIQUE ID',
 	short_name VARCHAR (80) NOT NULL COMMENT 'Кратко наименование',
 	name VARCHAR (255) NOT NULL COMMENT 'Пълно наименование',

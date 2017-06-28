@@ -15,6 +15,27 @@ include '..'.DIRECTORY_SEPARATOR.'header.php';
 		<title>Календар</title>
 	</head>
 	<body>
+<form name="nom_degrees_edit_form" method="post">
+			<input type="hidden" name="update"/>
+			<script>
+			</script>
+			<div class="edit" id="userInfo">
+				<div class="edit_form">
+					<label>Зала <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currDegrees->getId()?>"/> </label>
+					<label>Код <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currDegrees->getShortName()?>"/> </label>
+					<label>Име <input type="text" name="name" id="name" value="<?= $currDegrees->getName()?>"/> </label>
+					<label>Описание <input type="text" name="description" id="description" value="<?= $currDegrees->getDescription()?>"/> </label>
+					<label>Активност <select name="isActive" id="isActive" required="Y">
+						<option></option>
+						<option value='Y' <?= $currDegrees->getIsActive() != null && strcmp ($currDegrees->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
+						<option value='N' <?= $currDegrees->getIsActive() != null && strcmp ( $currDegrees->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>
+					</select> </label>
+				</div>
+				<div class="buttons">
+					<button type="button" name="Update" value="Промени" onclick="updateRow();">Промени</button>
+					<button type="button" name="Clean" value="Изчисти" onclick="clearFields();">Изчисти</button> 
+				</div>
+            </div>
 		<div id="calendar-main">            
 			<div class="month">
 				<h1>Август 2014</h1>            
@@ -201,5 +222,7 @@ include '..'.DIRECTORY_SEPARATOR.'header.php';
 				</ul>            
 			</div><!-- /. calendar -->        
 		</div><!-- /. wrap -->
+
+		</form>
 	</body>
 </html>

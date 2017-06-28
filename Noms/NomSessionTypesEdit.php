@@ -4,10 +4,10 @@ include '..'.DIRECTORY_SEPARATOR.'header.php';
 
 function save($conn, $post){
 	if($post['id'] != null && !empty($post['id'])) {
-		$stmt = $conn->prepare("UPDATE NOM_SESSION_TYPES SET short_name = ?, name = ?, description = ?, is_active = ? WHERE ID = ?");
+		$stmt = $conn->prepare("UPDATE nom_Session_types SET short_name = ?, name = ?, description = ?, is_active = ? WHERE ID = ?");
 		$stmt->execute(array($post['shortName'], $post['name'], $post['description'], $post['isActive'], $post['id']));
 	} else {
-		$stmt = $conn->prepare("INSERT INTO NOM_SESSION_TYPES (short_name, name, description, is_active) VALUES (?,?,?,?)");
+		$stmt = $conn->prepare("INSERT INTO nom_Session_types (short_name, name, description, is_active) VALUES (?,?,?,?)");
 		$stmt->execute(array($post['shortName'], $post['name'], $post['description'], $post['isActive']));
 	}
 	return "Записа беше редактиран успешно!";
@@ -22,7 +22,7 @@ if(isset($_POST) && isset($_POST['update']) && !empty($_POST['update'])){
 
 $currSessionType = new NomSessionTypes();
 if(isset($sessionTypeId)) {
-	$sql = "SELECT id, short_name, nst.name, nst.description, nst.is_active FROM NOM_SESSION_TYPES nst where nst.id = ?";
+	$sql = "SELECT id, short_name, nst.name, nst.description, nst.is_active FROM nom_Session_types nst where nst.id = ?";
 	$stmt = $conn->prepare($sql);
 	if ($stmt->execute(array($sessionTypeId))) { 
 		while ($row = $stmt->fetch()) {
@@ -60,7 +60,7 @@ if(isset($sessionTypeId)) {
                 function checkSubmit(e)
                 {
                     var v = document.forms['nom_session_type_edit_form'];
-                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey) {
+                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey)
                     {
                         updateRow();
                     }
@@ -84,11 +84,11 @@ if(isset($sessionTypeId)) {
 			</script>
 			<div class="edit">
 				<div class="edit_form">
-					<label>№ <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currSessionType->getId()?>"/> </label>
-					<label>Код <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currSessionType->getShortName()?>"/> </label>
+					<label>№<span class="required">*</span> <input readonly type="text" name="id" required="Y" id="id" readonly value="<?= $currSessionType->getId()?>"/> </label>
+					<label>Код<span class="required">*</span> <input type="text" required="Y" name="shortName" id="shortName" value="<?= $currSessionType->getShortName()?>"/> </label>
 					<label>Име <input type="text" name="name" id="name" value="<?= $currSessionType->getName()?>"/> </label>
 					<label>Описание <input type="text" name="description" id="description" value="<?= $currSessionType->getDescription()?>"/> </label>
-					<label>Активност <select name="isActive" id="isActive" required="Y">
+					<label>Активност<span class="required">*</span> <select name="isActive" id="isActive" required="Y">
 						<option></option>
 						<option value='Y' <?= $currSessionType->getIsActive() != null && strcmp ($currSessionType->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
 						<option value='N' <?= $currSessionType->getIsActive() != null && strcmp ( $currSessionType->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>

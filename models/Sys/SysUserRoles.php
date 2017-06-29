@@ -1,15 +1,10 @@
+<?php
 class SysUserRoles {
 	private $id;
 	private $username;
 	private $role;
 	
 	function __construct() {}
-	
-	function __construct($id, $username, $role) {
-		$this->id = $id;
-		$this->username = $username;
-		$this->role = $role;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -35,3 +30,4 @@ class SysUserRoles {
 		$this->role = $role;
 	}
 }
+?>

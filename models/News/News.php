@@ -1,3 +1,4 @@
+<?php
 class News {
 	private $id;
 	private $publisher;
@@ -6,14 +7,6 @@ class News {
 	private $content;
 	
 	function __construct() {}
-	
-	function __construct($id, $publisher, $publishDate, $title, $content) {
-		$this->id = $id;
-		$this->publisher = $publisher;
-		$this->publishDate = $publishDate;
-		$this->title = $title;
-		$this->content = $content;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -55,3 +48,4 @@ class News {
 		$this->content = $content;
 	}
 }
+?>

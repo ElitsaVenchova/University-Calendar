@@ -1,3 +1,4 @@
+<?php 
 class CourseRestrictions {
 	private $id;
 	private $studyProgramId;
@@ -5,13 +6,6 @@ class CourseRestrictions {
 	private $yearAtUniversity;
 	
 	function __construct() {}
-	
-	function __construct($id, $studyProgramId, $courseId, $yearAtUniversity) {
-		$this->id = $id;
-		$this->studyProgramId = $studyProgramId;
-		$this->courseId = $courseId;
-		$this->yearAtUniversity = $yearAtUniversity;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -45,3 +39,4 @@ class CourseRestrictions {
 		$this->yearAtUniversity = $yearAtUniversity;
 	}
 }
+?>

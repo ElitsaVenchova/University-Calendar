@@ -1,3 +1,4 @@
+<?php
 class EventViewGroups {
 	private $id;
 	private $masterEventId;
@@ -9,17 +10,6 @@ class EventViewGroups {
 	private $studyProgramId;
 	
 	function __construct() {}
-	
-	function __construct($id, $masterEventId, $type, $courseId, $yearAtUniversity, $degreeId, $cathedralId, $studyProgramId) {
-		$this->id = $id;
-		$this->masterEventId = $masterEventId;
-		$this->type = $type;
-		$this->courseId = $courseId;
-		$this->yearAtUniversity = $yearAtUniversity;
-		$this->degreeId = $degreeId;
-		$this->cathedralId = $cathedralId;
-		$this->studyProgramId = $studyProgramId;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -85,3 +75,4 @@ class EventViewGroups {
 		$this->studyProgramId = $studyProgramId;
 	}
 }
+?>

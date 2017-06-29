@@ -1,0 +1,841 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+
+body {
+    /*background: #EEF1F0;*/
+    margin: 0px;
+    background: white;
+    color: #74777b;
+    font-weight: 400;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #2CC185;
+    text-decoration: none;
+    outline: none;
+}
+
+/* Header */
+header {
+    background-image: url(../style/background.jpg);
+    background-size:inherit;
+    font-style: italic;
+    position: relative;
+    padding-top: 5px;
+}
+
+.codrops-header {
+    letter-spacing: -1px;
+    color: white;
+}
+
+.codrops-header h1 {
+    margin: 5px 5px 0px auto;
+    font-weight: 800;
+    font-size: 2.5em;
+    line-height: 1;
+}
+
+.codrops-header div  {
+    margin: 0px;
+    padding: 0px;
+    float: right;
+    text-align: right;
+}
+
+.codrops-header div span{
+    margin-right: 5px;
+    letter-spacing: 0.3px;
+    font-size: 90%;
+}
+
+.codrops-header img {
+    height: 80px;
+}
+
+@media screen and (max-width: 580px){
+    .codrops-header img {
+        height: 40px;
+    }
+}
+
+@media screen and (min-width: 282px) and (max-width: 580px){
+    .codrops-header div h1{
+        font-size: 1.5em;
+        text-align: left;
+        margin: 0px 10px auto auto;
+    }
+    .codrops-header div {
+        float: none;
+        text-align: left;
+    }
+
+}
+
+@media screen and (max-width: 282px){
+    .codrops-header div {
+        text-align: left;
+        margin: 0px 10px auto auto;
+    }
+
+    .codrops-header h1 {
+        font-size: 1.5em;
+        float: none;
+        text-align: left;
+        margin: 0px 10px auto auto;
+    }
+
+    .codrops-header div  {
+        float: none;
+    }
+}
+
+/* Navigaytion */
+
+.tabs nav {
+    text-align: center;
+}
+.tabs nav ul {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+}
+
+.tabs nav ul li {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.tabs nav a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tabs nav a span {
+    vertical-align: middle;
+    font-size: 0.75em;
+}
+
+/* Icons */
+.icon::before {
+    z-index: 10;
+    display: inline-block;
+    margin: 0 0.4em 0 0;
+    vertical-align: middle;
+    text-transform: none;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1;
+    speak: none;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*****************************/
+/*Horizontal Bar */
+/*****************************/
+
+.horizontal-style-bar {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.25em;
+}
+
+.horizontal-style-bar nav {
+    background: -webkit-linear-gradient(#397561, #36735E, #20644D,#08533A,#08533A,#08533A,#08533A, #20644D, #397561, #36735E); 
+    background: -o-linear-gradient(#397561, #36735E, #20644D,#08533A,#08533A,#08533A, #08533A, #20644D, #397561, #36735E); 
+    background: -moz-linear-gradient(#397561, #36735E, #20644D,#08533A,#08533A,#08533A, #08533A, #20644D, #397561, #36735E);
+    background: linear-gradient(#397561, #36735E, #20644D, #08533A, #08533,#08533AA,#08533A, #20644D, #397561, #36735E);
+}
+
+.horizontal-style-bar nav ul {
+
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    border: 2px solid transparent;
+}
+
+.horizontal-style-bar nav ul li a {
+    margin: 2px;
+    border: 2px solid transparent;
+    line-height: 2.0;
+    /*background-color: #669E70;?*/
+    /*    background-image: url(../style/h_tab_background.jpg);
+        background-size:cover;*/
+    background-color: #4CAF50;
+    color: #fff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.horizontal-style-bar nav ul li a:hover,
+.horizontal-style-bar nav ul li a:focus {
+    color: #2CC185;
+}
+
+.horizontal-style-bar nav ul li a span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 0.6em;
+}
+
+.horizontal-style-bar nav ul li.tab-current a {
+    background: #864D41;
+    color: #fff;
+}
+
+.horizontal-style-bar nav ul li {
+    max-width: 300px;
+    text-align: center;
+}
+
+/*****************************/
+/*Vertical Bar */
+.vertical-style-bar {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.25em;
+}
+
+.vertical-style-bar nav {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #CCCCCC;
+}
+
+.vertical-style-bar nav ul {
+    border: 4px solid transparent;
+}
+
+.vertical-style-bar nav ul li a {
+    margin: 0 2px;
+    line-height: 2.00;
+    background-color: #E7E7E7;
+    color: #74777b;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.vertical-style-bar nav ul li {
+    border-bottom: 1px solid rgba(40,44,42,0.05);
+}
+
+.vertical-style-bar nav ul li a:hover,
+.vertical-style-bar nav ul li a:focus {
+    color: #2CC185;
+}
+
+.vertical-style-bar nav ul li a span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 0.6em;
+    padding-left: 12px;
+}
+
+.vertical-style-bar nav ul li.tab-current a {
+    margin: 0 2px;
+    background: #1E875D;
+    color: #fff;
+}
+
+.vertical-style-bar nav ul li {
+    text-align: left;
+}
+/* ================================================================ */
+
+div.menu {
+    width: 275px;
+    float: left;
+    margin-top: 0px;
+    margin-right: 15px;
+    margin-left: 1px;
+}
+
+div.content {
+    margin-left: 290px;
+    padding-top: 20px;
+}
+
+/*Стила на менюто и съдържанието когато размера на екрана е по-малък от 580px*/
+@media screen and (max-width: 580px){
+    div.menu {
+        float: none;
+        width:100%;
+    }
+
+    div.content {
+        margin-left: 10px;
+    }
+}
+/* ================================================================ Това е стила на съобщенията */
+
+div.error {
+    width: 95%;
+    color:red;
+    border: #ff4f4f solid thin;
+    margin: 5px 0px 15px 0px;
+    padding-right: 5px;
+    padding-right: 15px;
+    background-color: #ffd8d8;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
+div.succ {
+    width: 95%;
+    color:green;
+    border: #2F9559 solid thin;
+    margin: 5px 0px 15px 0px;
+    padding-right: 5px;
+    background-color: #d9f3e4;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
+div.warnings {
+    width: 95%;
+    color:#E0AA0C;
+    border: #FFFF00 solid 2px;
+    margin: 5px 0px 15px 0px;
+    padding-right: 5px;
+    background-color: #FFFFC8;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
+div.info {
+    width: 95%;
+    color:#1330DD;
+    border: #6578F2 solid thin;
+    margin: 5px 0px 15px 0px;
+    padding-right: 5px;
+    background-color: #D4E9FF;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.8em;
+}
+
+div.errorPage {
+    width: 95%;
+    color:red;
+    border: #ff4f4f solid thin;
+    margin: 5px 0px 5px 0px;
+    padding-right: 5px;
+    background-color: #ffd8d8;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.8em;
+}
+/* ================================================================Това е стила на табличките */
+
+table.dataset {
+    width:95%;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse:collapse;
+    margin-bottom:5px;
+    table-layout: fixed;
+    margin-top:10px;
+    overflow: scroll; 
+    background-color: #FFFFFF;
+}
+
+table.dataset tr.selected {
+    background-color: #ABA9D8 !important;
+}
+
+table.dataset tr th{
+    background-color: #5DB761;
+    padding: 1px;
+    text-align: left;
+    padding: 5px;
+
+    font-size: 85%;
+    color: #ffffff
+}
+
+table.dataset tr th a{
+    padding: 1px;
+    text-align: left;
+    padding: 5px;
+    text-decoration: #ffffff;
+    color: #ffffff;
+}
+
+/*Стил на таблицата с данни когато екрана е с ширина по-малка от 580px*/
+@media screen and (max-width: 580px){
+    table.dataset tr {
+        padding: 8px 0;
+        display: block;
+    }
+    table.dataset tr th, table.dataset tr td {
+        padding: 2px 12px;
+        display: block;
+    }
+}
+
+table.dataset tr td{
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px;
+    width:auto;
+    /*text-align: justify;*/
+    word-wrap: break-word;
+    color:rgb(59, 25, 26);
+    font-size: 12px;
+}
+
+table.dataset  tr:nth-child(odd) {
+    background-color: #f6f6f6;
+}
+
+table.dataset tr:nth-child(even) {
+    background-color: #e9e9e9;
+}
+/* ===================================================Pagination */
+table.pagination {
+    width: 95%;
+}
+
+table.pagination tr td div.range {
+    float: right;
+}
+
+table.pagination tr td div.range select {
+    width:70px;
+}
+
+table.pagination tr td div.pages{
+    float: left;
+}
+
+table.pagination a {
+    background:#5DB761;
+    padding: 5px 8.5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-decoration: none;
+    vertical-align: top;
+    /*color: #65262D;*/
+    /*font: bold 11px Verdana, Arial, Helvetica, sans-serif;*/
+
+    font-size: 85%;
+    color: #ffffff
+}
+
+table.pagination a:hover {
+    background: #F4EBE9;
+}
+
+table.pagination a.current {
+    background: #F4EBE9;
+    text-decoration:underline;
+    color:#6B2628;
+}
+
+table.pagination {
+    border:0px;
+}
+
+/* ================================================================ Бутоните */
+/*div.buttons {
+    text-align: right;
+}*/
+div.buttons button.right {
+    float: right;
+}
+div.buttons button, 
+div.buttons input[type=submit], 
+div.buttons input[type=button] {
+    background: #864D41;
+    border: 0px;
+    border-radius: 3px;
+    color:#fff;
+    cursor:pointer;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 0.8em;
+    height:26px;
+    margin: 5px 5px 5px 0;
+    padding: 5px;
+    outline: none;
+}
+
+div.buttons button:disabled,
+div.buttons input[type=submit]:disabled, 
+div.buttons input[type=button]:disabled {
+    background: #d3898f;
+}
+/* ================================================================ Input полетата */
+.edit{
+    width: 45%;
+    min-width: 340px;;
+    display: inline-block;
+    vertical-align: top;
+    padding: 7px;
+    background: #F8F8F8;
+    margin-bottom: 15px;
+
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.edit label{
+    display: block;
+    font: 13px Arial, Helvetica, sans-serif;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.edit input[type="text"],
+.edit input[type="date"],
+.edit input[type="datetime"],
+.edit input[type="email"],
+.edit input[type="number"],
+.edit input[type="search"],
+.edit input[type="time"],
+.edit input[type="url"],
+.edit input[type="password"],
+.edit textarea,
+.edit select {
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3px;
+    border-radius: 6px;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border: 2px solid #fff;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.edit input[type="text"]:focus,
+.edit input[type="text"].focus {
+    border: solid 0px;
+    box-shadow: 0 0 5px 1px #969696;
+}
+
+.edit input[type="text"].datepicker {
+    width: -webkit-calc(100% - 20px);
+    width:    -moz-calc(100% - 20px);
+    width:         calc(100% - 20px);
+    display: inline;
+}
+
+.edit input[type="text"].datepicker:before {
+    content: '\A'; 
+    white-space: pre-wrap;
+}
+
+/***********************Стила на полетата във формата за редакция, който трябва
+да излизат на един ред заедно с бутоните. Този стил трябва да бъде добавен на 
+полето(input/select/...), на div.buttons и на label. Също след текста, който 
+трябва да излиза над полето, трябва да се добави таг <br/>.*/
+.edit .inline-show {
+    display: inline;
+}
+
+/***********************Стила на полетата, които не са минали успешно валидацията.*/
+div.items-list {
+    word-wrap: break-word;;
+    overflow-y:auto;
+}
+
+/***********************Стила на полетата, които не са минали успешно валидацията.*/
+input.ui-state-error {
+    border: 1px solid #cd0a0a; 
+    background: #FFFF84; 
+    color: #cd0a0a; 
+}
+select.ui-state-error {
+    border: 1px solid #cd0a0a; 
+    background: #FFFF84; 
+    color: #cd0a0a; 
+}
+
+/*Стила на формата за редакция когато размера на екрана е по-малък от 580px*/
+@media screen and (max-width: 580px){
+    .edit{
+        width: 93%;
+    }
+}
+
+/***********************Това са стиловете datepicker-a от jquery библиотеката.*/
+/*Стила на датите на datepicker-a*/
+div.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+    border: 1px solid #c5dbec/*{borderColorDefault}*/ !important;
+    background: #dfeffc/*{bgColorDefault}*/ url(ui-bg_glass_85_dfeffc_1x400.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/  !important;
+    font-weight: normal/*{fwDefault}*/ !important;
+    color: #555555/*{fcDefault}*/ !important;
+}
+/*Стила на маркираната дата на datepicke-a*/
+div.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { 
+    border: 1px solid #79b7e7/*{borderColorHover}*/ !important;
+    background: #d0e5f5/*{bgColorHover}*/ url(ui-bg_glass_75_d0e5f5_1x400.png)/*{bgImgUrlHover}*/ 50%/*{bgHoverXPos}*/ 50%/*{bgHoverYPos}*/ repeat-x/*{bgHoverRepeat}*/ !important; 
+    font-weight: normal/*{fwDefault}*/ !important;
+    color: #1d5987  !important; 
+}
+/*Стила на отблезязаната дана на datepicker-a*/
+div.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {  
+    border: 1px solid #2694e8/*{borderColorDefault}*/ !important;
+    background: #3baae3/*{bgColorDefault}*/ url(ui-bg_glass_50_3baae3_1x400.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/ !important; 
+    font-weight: normal/*{fwDefault}*/ !important; 
+    color: #555555/*{fcDefault}*/ !important;
+}
+/*Стила на днешния ден на datepicker-a*/
+div.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {
+    border: 1px solid #fad42e !important;
+    background: #fbec88 !important;
+    color: #363636 !important;
+    font-weight: bold !important;
+}
+
+div.ui-datepicker-today a.ui-state-highlight {
+    border: 1px solid #fad42e !important;
+    background: #fbec88 !important;
+    color: #363636 !important;
+    font-weight: bold !important; 
+}
+/*Заглавната част с месеца на datepicker-a*/
+div.ui-datepicker-header{
+    background: #d0e5f5 url(ui-bg_glass_75_d0e5f5_1x400.png)50% 50% repeat-x !important;
+}
+
+img.ui-datepicker-trigger{
+    padding-left: 2px;
+}
+
+/***********************Това са стиловете на календара.*/
+div.calendar {
+    width: 85%;
+    min-width: 340px;
+    background: #F8F8F8;
+    border: 3px solid;
+    box-sizing: border-box;
+}
+
+div.calendar *{
+    box-sizing: border-box;
+}
+
+div.week-header {
+    height: 25px;
+    background-color: #5DB761;
+}
+
+span.week-name {
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+.week {
+    width: 100%;
+    border: 3px solid;
+    height: 250px;
+}
+
+.day {
+    height: 100%;
+    float: left;
+    border: 3px solid;
+    flex: 1 1 auto;
+}
+
+.day-header{
+    margin: 0 auto;
+    color: white;
+    background-color: #5DB761;
+}
+
+.task-area {
+    overflow: auto;
+}
+
+.task {
+    border: 1px solid;
+}
+
+/***************************************************Стиловете на календара*/
+#calendar-main{
+  width: 80%;
+  margin:0 auto;
+}
+div.month {
+  text-align: center;
+}
+
+#calendar {
+  width: 100%;
+}
+
+#calendar a {
+  color: #8e352e;
+  text-decoration: none;
+}
+
+#calendar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#calendar li {
+  display: block;
+  float: left;
+  width: 14.345%;
+  padding: 3px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+
+#calendar ul.weekdays {
+  height: 40px;
+  background: #8e352e;
+}
+
+#calendar ul.weekdays li {
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 20px;
+  border: none !important;
+  padding: 10px 6px;
+  color: #fff;
+  font-size: 13px;
+}
+
+#calendar .days li {
+  height: 80px;
+}
+
+#calendar .days li:hover {
+  background: #d3d3d3;
+}
+
+#calendar .date {
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 4px;
+  background: #333;
+  color: #fff;
+  width: 20px;
+  border-radius: 50%;
+  float: right;
+}
+
+#calendar .event {
+  clear: both;
+  display: block;
+  font-size: 10px;
+  border-radius: 4px;
+  padding: 3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  line-height: 10px;
+  background: #e4f2f2;
+  border: 1px solid #b5dbdc;
+  color: #009aaf;
+  text-decoration: none;
+}
+
+#calendar .event-desc {
+  color: #666;
+  margin: 1px 0 3px 0;
+  text-decoration: none;
+  display: inline;
+}
+
+#calendar .event-time {
+  display: inline;
+}
+
+#calendar .other-month {
+  background: #f5f5f5;
+  color: #666;
+}
+
+
+
+/*************Стиловете на календара за екрани до 768 px ширина*/
+@media (max-width: 768px) {
+  #calendar .weekdays, #calendar .other-month {
+    display: none;
+  }
+
+  #calendar li {
+    height: auto !important;
+    border: 1px solid #ededed;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: -1px;
+  }
+
+  #calendar .date {
+    float: none;
+  }
+}
+
+/* ================================================================ Стила на * на задължителни полета */
+span.required {
+    color:red;
+    font-size: 75%;
+    font-style: italic;
+    font-weight: bold;
+    width: 30%;
+    text-align:right;
+}

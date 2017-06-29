@@ -1,15 +1,10 @@
+<?php
 class SysUsersPublications {
 	private $id;
 	private $author;
 	private $publucationId;
 	
 	function __construct() {}
-	
-	function __construct($id, $author, $publucationId) {
-		$this->id = $id;
-		$this->author = $author;
-		$this->publucationId = $publucationId;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -35,3 +30,4 @@ class SysUsersPublications {
 		$this->publucationId = $publucationId;
 	}
 }
+?>

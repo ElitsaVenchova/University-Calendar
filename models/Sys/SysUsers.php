@@ -1,3 +1,4 @@
+<?php
 class SysUsers {
 	private $username;
 	private $password;
@@ -20,28 +21,7 @@ class SysUsers {
 	
 	function __construct() {}
 	
-	function __construct($username, $password, $firstName, $surname, $lastName, $title, $address, $telefonNumber, $email, $visitingTime, $cabinet, $rownum, $cathedralId, $studyProgramId, $admGroup, $yearAtUniversity, $isActive, $notes) {
-		$this->username = $username;
-		$this->password = $password;
-		$this->firstName = $firstName;
-		$this->surname = $surname;
-		$this->lastName = $lastName;
-		$this->title = $title;
-		$this->address = $address;
-		$this->telefonNumber = $telefonNumber;
-		$this->email = $email;
-		$this->visitingTime = $visitingTime;
-		$this->cabinet = $cabinet;
-		$this->rownum = $rownum;
-		$this->cathedralId = $cathedralId;
-		$this->studyProgramId = $studyProgramId;
-		$this->admGroup = $admGroup;
-		$this->yearAtUniversity = $yearAtUniversity;
-		$this->isActive = $isActive;
-		$this->notes = $notes;
-	}
-	
-		public function getUsername(){
+	public function getUsername(){
 		return $this->username;
 	}
 
@@ -185,3 +165,4 @@ class SysUsers {
 		$this->notes = $notes;
 	}
 }
+?>

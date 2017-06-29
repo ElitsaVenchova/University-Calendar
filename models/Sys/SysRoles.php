@@ -1,3 +1,4 @@
+<?php
 class SysRoles {
 	private $id;
 	private $code;
@@ -5,13 +6,6 @@ class SysRoles {
 	private $description;
 	
 	function __construct() {}
-	
-	function __construct($id, $code, $name, $description) {
-		$this->id = $id;
-		$this->code = $code;
-		$this->name = $name;
-		$this->description = $description;
-	}
 
 	public function getId(){
 		return $this->id;
@@ -45,3 +39,4 @@ class SysRoles {
 		$this->description = $description;
 	}
 }
+?>

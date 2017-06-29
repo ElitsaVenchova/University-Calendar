@@ -1,3 +1,4 @@
+<?php
 class Rooms {
 	private $id;
 	private $num;
@@ -8,16 +9,6 @@ class Rooms {
 	private $isActive;
 	
 	function __construct() {}
-	
-	function __construct($id, $num, $palce, $typeId, $workStations, $description, $isActive) {
-		$this->id = $id;
-		$this->num = $num;
-		$this->palce = $palce;
-		$this->typeId = $typeId;
-		$this->workStations = $workStations;
-		$this->description = $description;
-		$this->isActive = $isActive;
-	}
 	
 	public function getId(){
 		return $this->id;
@@ -75,3 +66,4 @@ class Rooms {
 		$this->isActive = $isActive;
 	}
 }
+?>

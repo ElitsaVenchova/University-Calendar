@@ -43,94 +43,94 @@
 					//if()
 					$nstmt=$conn->prepare("INSERT INTO sys_users (username, password, first_name, surname, last_name, title, adress, telefon_number, email, visiting_time, cabinet, rownumber, cathedral_id, study_program_id, adm_group, year_at_university, is_active, notes) VALUES (:username, :password, :first_name, :surname, :last_name, :title, :adress, :telefon_number, :email, :visiting_time, :cabinet, :rownumber, :cathedral_id, :study_program_id, :adm_group, :year_at_university, :is_active, :notes)");
 					if(($input_user->getUsername())!=null && strlen($input_user->getUsername()) <= 80){
-						$nstmt -> bindparam(':username',$input_user->getUsername());
-						echo "1".$input_user->getUsername();
+						$nstmt -> bindValue(':username',$input_user->getUsername());
 					} else {
 						$errors['$input_user->getUsername()'] = "<div class='error'>".'Потребителското име е задължително поле с максимална дължина 80 символа.<br>'."</div>";
 					}
 					if(($input_user->getPassword())!=null && strlen($input_user->getPassword()) <= 80 && strlen($input_user->getPassword()) >=6){ 
-						$nstmt -> bindparam(':password',$input_user->getPassword());
+						$nstmt -> bindValue(':password',$input_user->getPassword());
 						} else {
 							$errors['$input_user->getPassword()'] = "<div class='error'>".'Паролата е задължително поле с максимална дължина 80 символа и минимална дължина 6 символа.<br>'."</div>";
 						}
 					if(($input_user->getFirstName()) != null && strlen($input_user->getFirstName()) <= 50){
-						$nstmt -> bindparam(':first_name',$input_user->getFirstName());
+						$nstmt -> bindValue(':first_name',$input_user->getFirstName());
 						} else {
 							$errors['$input_user->getFirstName()'] = "<div class='error'>".'Името е задължително поле с максимална дължина 50 символа'."</div>";
 						}
 					if(($input_user->getSurname()) != null && strlen($input_user->getSurname()) <= 50){
-						$nstmt -> bindparam(':surname',$input_user->getSurname());
+						$nstmt -> bindValue(':surname',$input_user->getSurname());
 						} else {
 							$errors['$input_user->getSurname()'] = "<div class='error'>".'Бащинно име е задължително поле с максимална дължина 50 символа.'."</div>";
 						}
 					if(($input_user->getLastName()) != null && strlen($input_user->getLastName()) <= 50){
-						$nstmt -> bindparam(':last_name',$input_user->getLastName());
+						$nstmt -> bindValue(':last_name',$input_user->getLastName());
 						} else {
 							$errors['$input_user->getLastName()'] = "<div class='error'>".'Фамилно име е задължително поле с максимална дължина 50 символа.'."</div>";
 						}
 					if(($input_user->getTitle()) != null && strlen($input_user->getTitle()) <= 50){
-						$nstmt -> bindparam(':title',$input_user->getTitle());
+						$nstmt -> bindValue(':title',$input_user->getTitle());
 						} else {
 							$errors['$input_user->getTitle()'] = "<div class='error'>".'Титлата е задължително поле с максимална дължина 50 символа.<br>'."</div>";
 						}
 					if(($input_user->getAddress()) != null && strlen($input_user->getAddress()) <= 350){
-						$nstmt -> bindparam(':adress',$input_user->getAddress());
+						$nstmt -> bindValue(':adress',$input_user->getAddress());
 						} else {
 							$errors['$input_user->getAddress()'] = "<div class='error'>".'Адрес е задължително поле с максимална дължина 350 символа.<br>'."</div>";
 						}
 					if(($input_user->getTelefonNumber()) != null && strlen($input_user->getTelefonNumber()) <= 50){
-						$nstmt -> bindparam(':telefon_number',$input_user->getTelefonNumber());
+						$nstmt -> bindValue(':telefon_number',$input_user->getTelefonNumber());
 						} else {
 							$errors['$input_user->getTelefonNumber()'] = "<div class='error'>".'Номер е задължително поле с максимална дължина 50 символа.<br>'."</div>";
 						}
 					if(($input_user->getEmail()) != null && strlen($input_user->getEmail()) <= 150){
-						$nstmt -> bindparam(':email',$input_user->getEmail());
+						$nstmt -> bindValue(':email',$input_user->getEmail());
 						} else {
 							$errors['$input_user->getEmail()'] = "<div class='error'>".'E-mail е задължително поле с максимална дължина 150 символа.<br>'."</div>";
 						}
 					if(((($input_user->getVisitingTime()) != null && in_array('LECTURER',$userRoles)) || (($input_user->getVisitingTime()) == null && !in_array('LECTURER',$userRoles)))&& strlen($input_user->getVisitingTime()) <= 450){
-						$nstmt -> bindparam(':visiting_time',$input_user->getVisitingTime());
+						$nstmt -> bindValue(':visiting_time',$input_user->getVisitingTime());
 						} else {
 							$errors['$input_visitingtime->getVisitingTime()'] = "<div class='error'>".'Приемно време е поле с максимална дължина 450 символа.'."</div>";
 						}
 					if(((($input_user->getCabinet()) != null && in_array('LECTURER',$userRoles)) || (($input_user->getCabinet()) == null && !in_array('LECTURER',$userRoles)))&& strlen($input_user->getCabinet()) <= 80){
 						echo $input_user->getCabinet();
-						$nstmt->bindparam(':cabinet',$input_user->getCabinet());
+						$nstmt->bindValue(':cabinet',$input_user->getCabinet());
 						} else {
 							$errors['$input_room->getCabinet()'] = "<div class='error'>".'Кабинет е задължително поле с максимална дължина 80 символа.'."</div>";
 						}
 					if(((($input_user->getAdmGroup()) != null && in_array('STUDENT',$userRoles)) || ($input_user->getAdmGroup()) == null && !in_array('STUDENT',$userRoles)) && strlen($input_user->getAdmGroup()) <= 2){
-						$nstmt->bindparam(':adm_group',$input_user->getAdmGroup());
+						$nstmt->bindValue(':adm_group',$input_user->getAdmGroup());
 						} else {
 							$errors['$input_user->getAdmGroup()'] = "<div class='error'>".'Административна група е задължително поле с максимална дължина 2 символа.'."</div>";
 						}
 					if(((($input_user->getYearAtUniversity()) != null && in_array('STUDENT',$userRoles)) || (($input_user->getYearAtUniversity()) == null && !in_array('STUDENT',$userRoles)))&& strlen($input_user->getYearAtUniversity()) <= 1){
-						$nstmt->bindparam(':year_at_university', $input_user->getYearAtUniversity());
+						$nstmt->bindValue(':year_at_university', $input_user->getYearAtUniversity());
 						} else {
 							$errors['$input_year->getYearAtUniversity()'] = "<div class='error'>".'Година е задължително поле с максимална дължина 1 символа.'."</div>";
 						}
 					if(strlen($input_user->getNotes()) <= 250){
-						$nstmt->bindparam(':notes', $input_user->getNotes());
+						$nstmt->bindValue(':notes', $input_user->getNotes());
 						} else {
 							$errors['$input_description->getNotes()'] = "<div class='error'>".'Описание е поле с максимална дължина 250 символа.'."</div>";
 						}
 					if((($input_user->getRownum()) != null && in_array('STUDENT',$userRoles)) || (($input_user->getRownum()) == null && !in_array('STUDENT',$userRoles))){
-						$nstmt->bindparam(':rownumber',$input_user->getRownum());
+						$nstmt->bindValue(':rownumber',$input_user->getRownum());
 					} else {
 							$errors['$input_description->getNotes()'] = "<div class='error'>".'Факултетен номер е поле с максимална дължина 250 символа.'."</div>";
 						}
+                                                echo '->'.$input_user->getCathedralId().'<-';
 					if((($input_user->getCathedralId()) != null && in_array('LECTURER',$userRoles)) || (($input_user->getCathedralId()) == null && !in_array('LECTURER',$userRoles))){
-						$nstmt->bindparam(':cathedral_id',$input_user->getCathedralId());
+						$nstmt->bindValue(':cathedral_id',$input_user->getCathedralId(), PDO::PARAM_INT);
 						echo $input_user->getCathedralId() == null;
 					} else {
 							$errors['$input_user->getCathedralId()'] = "<div class='error'>".'Катедра е поле с максимална дължина 250 символа.'."</div>";
 						}
 					if((($input_user->getStudyProgramId()) != null && in_array('STUDENT',$userRoles)) || (($input_user->getStudyProgramId()) == null && !in_array('STUDENT',$userRoles))){
-						$nstmt->bindparam(':study_program_id',$input_user->getStudyProgramId());
+						$nstmt->bindValue(':study_program_id',$input_user->getStudyProgramId());
 					} else {
 							$errors['$input_user->getStudyProgramId()'] = "<div class='error'>".'Специалност е поле с максимална дължина 250 символа.'."</div>";
 						}
-						$nstmt->bindparam(':is_active',$input_user->getIsActive());
+						$nstmt->bindValue(':is_active',$input_user->getIsActive());
 					if(!isset($errors) || count($errors)== 0){
 						if($nstmt->execute()){
 						 echo 'kjlkllklkl';
@@ -140,16 +140,16 @@
 					}
 				}
 				
-				$sqlRole='SELECT name,code FROM sys_roles';
+				$sqlRole='SELECT name,code FROM sys_Roles';
 				$statementRole=$conn->query($sqlRole);
 				
-				$sqlCathedral='SELECT id,short_name,name FROM nom_cathedrals';
+				$sqlCathedral='SELECT id,short_name,name FROM nom_Cathedrals';
 				$statementCathedral=$conn->query($sqlCathedral);
 				
-				$sqlDegree="SELECT id,short_name,name FROM nom_degrees";
+				$sqlDegree="SELECT id,short_name,name FROM NOM_DEGREES";
 				$statementDegree=$conn->query($sqlDegree);
 				
-				$sqlStudyProgram='SELECT id,short_name,name FROM nom_study_programs';/* TODO да сложа клауза, за да излизат само спец. за бак. или маг.*/
+				$sqlStudyProgram='SELECT id,short_name,name FROM NOM_STUDY_PROGRAMS';/* TODO да сложа клауза, за да излизат само спец. за бак. или маг.*/
 				$statementStudyProgram=$conn->query($sqlStudyProgram);
 				
 			?>

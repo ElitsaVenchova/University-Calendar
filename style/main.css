@@ -587,30 +587,9 @@ div.buttons input[type=button]:disabled {
 .edit .inline-show input[type="url"],
 .edit .inline-show input[type="password"],
 .edit .inline-show select {
-    width: 20%;
+    width: 120px;
 }
 
-.edit .common input[type="text"]:before,
-.edit .common input[type="date"]:before,
-.edit .common input[type="datetime"]:before,
-.edit .common input[type="email"]:before,
-.edit .common input[type="number"]:before,
-.edit .common input[type="search"]:before,
-.edit .common input[type="time"]:before,
-.edit .common input[type="url"]:before,
-.edit .common input[type="password"]:before,
-.edit .common select:before {
-    content: '\A'; 
-    white-space: pre-wrap;
-}
-
-/***********************Стила на полетата във формата за редакция, който трябва
-да излизат на един ред заедно с бутоните. Този стил трябва да бъде добавен на 
-полето(input/select/...), на div.buttons и на label. Също след текста, който 
-трябва да излиза над полето, трябва да се добави таг <br/>.*/
-.edit .inline-show {
-    display: inline;
-}
 
 /***********************Стила на полетата, които не са минали успешно валидацията.*/
 div.items-list {

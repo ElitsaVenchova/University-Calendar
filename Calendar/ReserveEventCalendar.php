@@ -53,7 +53,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     </head>
     <body>
         <form name="nom_degrees_edit_form" method="post">
-            <input type="hidden" name="update"/>
+            <input type="hidden" name="search"/>
             <script>
                 function reloadRoomsCombo() {
                     var typeId = $('#roomType').val();
@@ -63,19 +63,48 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 function changeDateOption() {
                     var eventType = $('#eventType').val();
                     if (eventType === 'O') {
-                        $('eventType').html("<label class=\"inline-show\">От дата<span class=\"required\">*</span><br/>" +
-                                "<input type=\"text\" required=\"Y\" name=\"fromDate\" id=\"fromDate\"/> </label>");
+                        $('#periodicDate').html("<label>Дата<span class=\"required\">*</span>" +
+                                "<input type=\"text\" required=\"Y\" name=\"date\" id=\"date\"/> </label>");
                     } else {
-                        $('eventType').html("<label class=\"inline - show\">До дата<span class=\"required\">*</span><br/>" +
-                                "<input type=\"text\" name=\"toDate\" id=\"toDate\"/> </label>" +
-                                "<label>Дата<span class=\"required\">*</span> " +
-                                "<input readonly type=\"text\" name=\"date\" required=\"Y\" id=\"date\" readonly/> </label>");
+                        $('#periodicDate').html("<label class=\"inline-show\" style=\"float: left\">От дата<span class=\"required\">*</span> " +
+                                "<input type=\"text\" required=\"Y\" name=\"fromDate\" id=\"fromDate\"/> </label>" +
+                                "<label class=\"inline-show\">До дата<span class=\"required\">*</span> " +
+                                "<input type=\"text\" name=\"toDate\" id=\"toDate\" required=\"Y\"/> </label>" +
+                                "<label>Ден от седмицата<span class=\"required\">*</span>" +
+                                "<select type=\"text\" required=\"Y\" name=\"weekDay\" id=\"weekDay\"> " +
+                                "<option value='1'>Понеделник</option> " +
+                                "<option value='2'>Вторник</option> " +
+                                "<option value='3'>Сряда</option> " +
+                                "<option value='4'>Четвъртък</option> " +
+                                "<option value='5'>Петък</option> " +
+                                "<option value='6'>Събота</option> " +
+                                "<option value='7'>Неделя</option> " +
+                                "</label>");
                     }
+                }
+
+                function search() {
+                }
+
+                function reseveRoom() {
+                }
+
+                function clearFields() {
+                    $('#roomType').val("");
+                    reloadRoomsCombo();
+                    $('#eventType').val("O");
+                    changeDateOption();
+                    $('#fromHour').val("");
+                    $('#toHour').val("");
+                    $('#fromWorkStations').val("");
+                    $('#toWorkStations').val("");
+                    $('#place').val("");
                 }
             </script>
             <div class="edit" id="userInfo">
                 <div class="edit_form">
-                    <label>Вид на зала<span class="required">*</span> <select name="roomType" id="roomType" onchange="reloadRoomsCombo()">
+                    <label>Вид на зала<span class="required">*</span>
+                        <select name="roomType" id="roomType" onchange="reloadRoomsCombo()">
                             <option></option>
                             <?php foreach ($nomRoomTypes as $val): ?>
                                 <option value="<?= $val->getId() ?>"> <?= $val->getName() ?></option>
@@ -93,21 +122,16 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                             <option></option>
                         </select> </label>
                     <span id="periodicDate">
-                        <label style="float: left">От дата<span class="required">*</span><br/> <input type="text" required="Y" name="fromDate" id="fromDate"/> </label>
-                        <label class="inline-show">До дата<span class="required">*</span><br/> <input type="text" name="toDate" id="toDate"/> </label>
+                        <label>Дата<span class="required">*</span><input type="text" required="Y" name="date" id="date"/> </label>
                     </span>
-                    <span class="common">
-                        <label>От час<br/> <input type="text" name="fromHour" id="fromHour"/> </label>
-                        <label>До час<br/> <input type="text" name="toHour" id="toHour"/> </label>
-                    </span>
-                    <span class="common">
-                        <label>От брой места<br/> <input type="text" name="fromWorkStations" id="fromWorkStations"/> </label>
-                        <label>До брой места<br/> <input type="text" name="toWorkStations" id="toWorkStations"/> </label>
-                    </span>
+                    <label class="inline-show" style="float: left">От час<span class="required">*</span> <input type="text" required="Y" name="fromHour" id="fromHour"/> </label>
+                    <label class="inline-show">До час<span class="required">*</span> <input type="text" name="toHour" id="toHour" required="Y"/> </label>
+                    <label class="inline-show" style="float: left">От брой места<span class="required">*</span> <input type="text" required="Y" name="fromWorkStations" id="fromWorkStations"/> </label>
+                    <label class="inline-show">До брой места<span class="required">*</span> <input type="text" name="toWorkStations" required="Y" id="toWorkStations"/> </label>
                     <label>Място <input type="text" name="place" id="place"/> </label>
                 </div>
                 <div class="buttons">
-                    <button type="button" name="Update" value="Промени" onclick="updateRow();">Търси</button>
+                    <button type="button" name="Update" value="Промени" onclick="search();">Търси</button>
                     <button type="button" name="Clean" value="Изчисти" onclick="clearFields();">Изчисти</button>
                     <button type="button" class='right' name="Update" value="Промени" onclick="reseveRoom();">Заяви зала</button> 
                 </div>

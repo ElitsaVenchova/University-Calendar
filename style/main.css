@@ -587,9 +587,30 @@ div.buttons input[type=button]:disabled {
 .edit .inline-show input[type="url"],
 .edit .inline-show input[type="password"],
 .edit .inline-show select {
-    width: 120px;
+    width: 20%;
 }
 
+.edit .common input[type="text"]:before,
+.edit .common input[type="date"]:before,
+.edit .common input[type="datetime"]:before,
+.edit .common input[type="email"]:before,
+.edit .common input[type="number"]:before,
+.edit .common input[type="search"]:before,
+.edit .common input[type="time"]:before,
+.edit .common input[type="url"]:before,
+.edit .common input[type="password"]:before,
+.edit .common select:before {
+    content: '\A'; 
+    white-space: pre-wrap;
+}
+
+/***********************Стила на полетата във формата за редакция, който трябва
+да излизат на един ред заедно с бутоните. Този стил трябва да бъде добавен на 
+полето(input/select/...), на div.buttons и на label. Също след текста, който 
+трябва да излиза над полето, трябва да се добави таг <br/>.*/
+.edit .inline-show {
+    display: inline;
+}
 
 /***********************Стила на полетата, които не са минали успешно валидацията.*/
 div.items-list {
@@ -844,4 +865,32 @@ span.required {
     font-weight: bold;
     width: 30%;
     text-align:right;
+}
+.loginform{
+	width:40%;
+	margin: 0% 0% 0% 20%; 
+	position:center;
+	
+}
+.loginform img{
+	display:block;
+	position:center;
+}
+.editl{
+    width: 40%;
+    min-width: 340px;;
+    display: inline-block;
+    vertical-align: top;
+    padding: 7px;
+    background: #F8F8F8;
+    margin-bottom: 15px;
+	
+
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }

@@ -53,7 +53,7 @@
                     $errors['$input_user->getUsername()'] = "<div class='error'>" . 'Потребителското име е задължително поле с максимална дължина 80 символа.<br>' . "</div>";
                 }
                 if (!empty($input_user->getPassword()) && strlen($input_user->getPassword()) <= 80 && strlen($input_user->getPassword()) >= 6) {
-                    $nstmt->bindValue(':password', $input_user->getPassword());
+                    $nstmt->bindValue(':password', sha1($input_user->getPassword());
                 } else {
                     $errors['$input_user->getPassword()'] = "<div class='error'>" . 'Паролата е задължително поле с максимална дължина 80 символа и минимална дължина 6 символа.<br>' . "</div>";
                 }

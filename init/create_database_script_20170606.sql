@@ -383,3 +383,34 @@ INSERT INTO sys_users_roles(username, role)
 	values ('aadmin','ADMIN');
 INSERT INTO sys_users_roles(username, role)
 	values ('ssekretar','SECRETARY');
+
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '314', '‘Ã»', 30, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '200', '‘Ã»', 200, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '325', '‘Ã»', 150, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '02', '‘Ã»', 50, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '01', '‘Ã»', 70, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '09', '‘Ã»', 15, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '321', '‘Ã»', 35, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '320', '‘Ã»', 35, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '107', '‘Ã»', 35, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '307', '‘Ã»', 20, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '405', '‘Ã»', 20, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '500', '‘Ã»', 40, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '210', '‘’‘', 250, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '130', '‘’‘', 200, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '207', '‘Á‘ A', 90, '', 'Y');

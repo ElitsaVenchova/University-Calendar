@@ -192,7 +192,7 @@
                         <label>Степен<span class="required">*</span>
                             <select name="opt">
                                 <option></option>
-<?php while ($row = $statementDegree->fetch(PDO::FETCH_ASSOC)): ?>
+								<?php while ($row = $statementDegree->fetch(PDO::FETCH_ASSOC)): ?>
                                     <option value="<?= $row['id']; ?>"> <?= $row['name']; ?></option>
                                 <?php endwhile; ?>
                             </select></label>
@@ -200,9 +200,9 @@
                         <label>Специалност <span class="required">*</span>
                             <select name="spec">
                                 <option></option>
-<?php while ($row = $statementStudyProgram->fetch(PDO::FETCH_ASSOC)): ?>
-                                    <option value="<?= $row['id']; ?>"> <?= $row['name']; ?></option>
-                                <?php endwhile; ?>				
+									<?php while ($row = $statementStudyProgram->fetch(PDO::FETCH_ASSOC)): ?>
+										<option value="<?= $row['id']; ?>"> <?= $row['name']; ?></option>
+									<?php endwhile; ?>				
                             </select></label>
                         <label>Група<span class="required">*</span><input type="number" name="adm_group" min=0 max=10></label>
                         <label>Факултетен номер<span class="required">*</span> <input type="number" name="rownum" min=0></label>

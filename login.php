@@ -6,20 +6,20 @@
 			$user=new SysUsers();
 			$user->setUsername($_POST['username']);
 			$user->setPassword($_POST['password']);
-			if((empty($user->getUsername()) && strlen($user->getUsername()) >= 80) && (empty($user->getPassword()) && strlen($user->getPassword()) >= 80 && strlen($user->getPassword()) <= 6)){
-				array_push($error,"Wrong username or password!");
-			}
-			if(count($error)==0){
-				$sql="SELECT username, password FROM sys_Users WHERE username=? and password=?";
+				$sql="SELECT username, password FROM Sys_Users WHERE username=? and password=?";
 				$stmt=$conn->prepare($sql);
-				$result=$stmt->execute(array($user->getUsername(),sha1($user->getPassword())));
+				$result=$stmt->execute(array($user->getUsername(),$user->getPassword()));
 				if($result && $stmt->rowCount() == 1){
 					header('Location: profile.php');
+					$_SESSION['logged_in'] == 1;
+					$_SESSION['user_id'] = $user->getUsername();
 				} else{
 					array_push($error,"Wrong username or password");
+					
 				}
 			}
-		} 
+			
+		
 		
 ?>
 <!DOCTYPE html>

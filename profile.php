@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="style/main.css" type="text/css"/>
+        <link rel="stylesheet" href="style/profile.css" type="text/css"/>
         <link type="text/css" href="scripts/jquery-ui-themes-1.12.1/themes/base/jquery-ui.css" rel="stylesheet"/>
         <script type="text/JavaScript" src="scripts/jquery-3.2.1.js"></script>
         <script type="text/JavaScript" src="scripts/UserJQueryMessageStyles.js"></script>
@@ -31,7 +31,20 @@
 			</div>
 			<div class="nav">
 				<ul>
-					<li><a href="profilered.php">Моят профил</a></li>
+					<?php 
+						$username=$_SESSION['user_id'];
+						$stmt=$conn->prepare("SELECT role FROM sys_users_roles WHERE username='$username'");
+						$stmt->execute();
+						while($row=$stmt->fetch()){
+							if($stmt && $row['role'] != 'ADMIN'){
+								echo '<li><a href="profilered.php">Моят профил</a></li>';
+							} else{
+								echo '<li><a href="profilered.php">Моят профил</a></li>';
+								echo '<li><a href="registration.php">Редакция на профил</a></li>';
+								
+							}
+						}
+					?>
 					<li><a href="">Календар</a></li>
 					<li><a href="">Дисциплини</a></li>
 						<?php 

@@ -6,7 +6,6 @@
     $userRoles = array();
         if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 			$username=$_SESSION['user_id'];
-			echo $username;
 			$input_user = new SysUsers();
 			$input_user->setPassword($_POST['password']);
 			$input_user->setAddress($_POST['address']);

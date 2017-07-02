@@ -11,7 +11,7 @@
 				$result=$stmt->execute(array($user->getUsername(),$user->getPassword()));
 				if($result && $stmt->rowCount() == 1){
 					header('Location: profile.php');
-					$_SESSION['logged_in'] == 1;
+					$_SESSION['logged_in'] == true;
 					$_SESSION['user_id'] = $user->getUsername();
 				} else{
 					array_push($error,"Wrong username or password");

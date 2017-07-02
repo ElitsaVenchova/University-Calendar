@@ -52,10 +52,10 @@ function searchRooms($conn, $roomType, $room, $eventType, $fromDate, $toDate, $f
     $stmt->bindValue(':toHour', empty($toHour) ? null : $toHour);
     $stmt->bindValue(':fromWorkStations', empty($fromWorkStations) ? null : $fromWorkStations);
     $stmt->bindValue(':toWorkStations', empty($toWorkStations) ? null : $toWorkStations);
-    $stmt->bindValue(':place', empty($place) ? null : '%'.$place.'%');
+    $stmt->bindValue(':place', empty($place) ? null : '%' . strtoupper($place) . '%');
     $stmt->bindValue(':weekDay', $weekDay);
 
-    echo $stmt->execute();
+    $stmt->execute();
 
     $rooms = array();
     while ($row = $stmt->fetch()) {
@@ -66,7 +66,8 @@ function searchRooms($conn, $roomType, $room, $eventType, $fromDate, $toDate, $f
             array_push($rooms[$row["room_id"]], $event);
         }
     }
-    
+    print_r($rooms);
+
     $stmt = $conn->prepare($sqlEventsData);
     $stmt->bindValue(':typeId', empty($roomType) ? null : $roomType);
     $stmt->bindValue(':room', empty($room) ? null : $room);
@@ -77,7 +78,7 @@ function searchRooms($conn, $roomType, $room, $eventType, $fromDate, $toDate, $f
     $stmt->bindValue(':toHour', empty($toHour) ? null : $toHour);
     $stmt->bindValue(':fromWorkStations', empty($fromWorkStations) ? null : $fromWorkStations);
     $stmt->bindValue(':toWorkStations', empty($toWorkStations) ? null : $toWorkStations);
-    $stmt->bindValue(':place', empty($place) ? null : '%'.$place.'%');
+    $stmt->bindValue(':place', empty($place) ? null : '%' . strtoupper($place) . '%');
     $stmt->bindValue(':weekDay', $weekDay);
 
     $events = array();
@@ -93,8 +94,6 @@ function searchRooms($conn, $roomType, $room, $eventType, $fromDate, $toDate, $f
     $result = array();
     foreach ($rooms as $key => $value) {
         $result += calculateRoomGrafic($value, $events[$key]);
-        echo $key . ' - ';
-        print_r($result);
     }
     return $result;
 }
@@ -147,7 +146,6 @@ $searchResult = array();
 if (isset($_GET['searchRooms']) && !empty($_GET['searchRooms'])) {
     $searchResult = searchRooms($conn, $roomType, $room, $eventType, $fromDate, $toDate, $fromHour, $toHour, $fromWorkStations, $toWorkStations, $place, $weekDay, $sqlRoomsData, $sqlEventsData);
 }
-print_r($searchResult);
 
 //Списък с видовете зали
 $sql = "SELECT nrt.id, nrt.short_name, nrt.name, nrt.description, nrt.is_active FROM nom_Room_types nrt WHERE nrt.is_active = 'Y' order by nrt.name";
@@ -284,7 +282,7 @@ if ($stmt->execute(array(empty($roomType) ? null : $roomType))) {
                         </select>
                     </label>
                     <label class="inline-show" style="float: left">От час<span class="required">*</span> 
-                        <select required="Y" name="fromHour" id="fromHour">
+                        <select required="Y" name="fromHour" id="fromHour"style="width: 111px;">
                             <option></option>
                             <?php for ($i = 7; $i <= 22; $i++) { ?>
                                 <option value="<?= $i ?>:00"><?= $i ?>:00</option>

@@ -10,14 +10,51 @@
 	color: green;
 }
 .nav{
-	width:30%;
+	width:20%;
+	height:100%;
 	margin:0% 80% 0% 2%;
 	display:block;
 	left:0%;
-  position: fixed;
+	position: fixed;
+	color:green;
+	border-right: solid grey 0.1px;
+	
+}
+.nav a{
+	color:green;
+}
+ul{
+	decoration:none;
+}
+.nav a:visited{
+  color: black;
+	text-decoration: underline;
+	font-weight: bold;
 }
 .main{
 	width:60%;
 	margin:0% 2% 0% 30%;
 	display:block;
+	
+	
+}
+nav:hover ul{
+	display: block;
+}
+div{
+	height: auto;
+	font-size: 18px;
+}
+div p{
+  line-height: 1.2;
+  letter-spacing: 1px;
+	text-indent: 50px;
+}
+p::first-letter{
+	font-weight: bold;
+}
+h3,h4{
+  color:green;
+  text-align: inherit;
+  text-decoration: underline;
 }

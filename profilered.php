@@ -13,29 +13,29 @@ if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $input_user->setEmail($_POST['e-mail']);
     $sysStmt = $conn->prepare("UPDATE Sys_Users SET password=:password,adress=:address,telefon_number=:tel, email=:email WHERE username='$username'");
     if (strlen($input_user->getPassword()) <= 80 && strlen($input_user->getPassword()) >= 6) {
-        $sysStmt = bindValue(':password', sha1($input_user->getPassword()));
+        $sysStmt -> bindValue(':password', sha1($input_user->getPassword()));
     } else {
         $errors['$input_user->getPassword()'] = "<div class='error'>" . 'Паролата е задължително поле с максимална дължина 80 символа и минимална дължина 6 символа.<br>' . "</div>";
-        echo "1";
+     
     }
     echo $input_user->getAddress();
     if (strlen($input_user->getAddress()) <= 350) {
-        $sysStmt = bindValue(':address', $input_user->getAddress());
+        $sysStmt -> bindValue(':address', $input_user->getAddress());
     } else {
         $errors['$input_user->getAddress()'] = "<div class='error'>" . 'Адрес е задължително поле с максимална дължина 350 символа.' . "</div>";
-        echo "2";
+     
     }
     if (strlen($input_user->getTelefonNumber()) <= 50) {
-        $sysStmt = bindValue(':tel', $input_user->getTelefonNumber());
+        $sysStmt -> bindValue(':tel', $input_user->getTelefonNumber());
     } else {
         $errors['$input_user->getTelefonNumber()'] = "<div class='error'>" . 'Номер е задължително поле с максимална дължина 50 символа.<br>' . "</div>";
-        echo "3";
+     
     }
     if (strlen($input_user->getEmail()) <= 150) {
-        $sysStmt = bindValue(':email', $input_user->getEmail());
+        $sysStmt -> bindValue(':email', $input_user->getEmail());
     } else {
         $errors['$input_user->getEmail()'] = "<div class='error'>" . 'E-mail е задължително поле с максимална дължина 150 символа.<br>' . "</div>";
-        echo "4";
+        
     }
     if (!isset($errors) || count($errors) == 0) {
         if ($sysStmt->execute()) {

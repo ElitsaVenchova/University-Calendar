@@ -1,0 +1,23 @@
+.head{
+	width:100%;
+	margin:0% 0% 0% 85%;
+	padding: 0px 30px;
+	color:black;
+	font-size: 20px;
+}
+.head a{
+	padding:0px 10px;
+	color: green;
+}
+.nav{
+	width:30%;
+	margin:0% 80% 0% 2%;
+	display:block;
+	left:0%;
+  position: fixed;
+}
+.main{
+	width:60%;
+	margin:0% 2% 0% 30%;
+	display:block;
+}

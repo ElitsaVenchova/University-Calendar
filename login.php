@@ -6,7 +6,7 @@
 			$user=new SysUsers();
 			$user->setUsername($_POST['username']);
 			$user->setPassword($_POST['password']);
-				$sql="SELECT username, password FROM Sys_Users WHERE username=? and password=?";
+				$sql="SELECT username, password FROM sys_users WHERE username=? and password=?";
 				$stmt=$conn->prepare($sql);
 				$result=$stmt->execute(array($user->getUsername(),$user->getPassword()));
 				if($result && $stmt->rowCount() == 1){

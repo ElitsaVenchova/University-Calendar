@@ -11,7 +11,7 @@
         <meta charset ="utf-8">
         <meta name = "Description" content = "This web page is for students calendar. They can see their calendars, their lecturers and so on.">
         <meta name = "keywords" content = "Students, Calendar, Lecturers">
-    <mate name = "author" content = "Elica Venchova, Natalia Ignatova">
+    <meta name = "author" content = "Elica Venchova, Natalia Ignatova">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
         <body>

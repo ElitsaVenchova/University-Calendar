@@ -45,7 +45,7 @@
 							}
 						}
 					?>
-					<li><a href="">Календар</a></li>
+                                    <li><a href="Calendar/ReserveEventCalendar.php">Календар</a></li>
 					<li><a href="">Дисциплини</a></li>
 						<?php 
 							echo '<ul>';

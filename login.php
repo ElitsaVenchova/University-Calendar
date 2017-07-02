@@ -8,7 +8,7 @@
 			$user->setPassword($_POST['password']);
 				$sql="SELECT username, password FROM sys_users WHERE username=? and password=?";
 				$stmt=$conn->prepare($sql);
-				$result=$stmt->execute(array($user->getUsername(),$user->getPassword()));
+				$result=$stmt->execute(array($user->getUsername(),sha1($user->getPassword())));
 				if($result && $stmt->rowCount() == 1){
 					header('Location: profile.php');
 					$_SESSION['logged_in'] == true;

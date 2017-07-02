@@ -21,14 +21,8 @@
 			?>
 			<div class="head">
 				<?php  
-					$user = new SysUsers();
-					$username=$user->getUsername();
 					if(isset($_SESSION['user_id'])){
-						$sql="SELECT username FROM Sys_Users WHERE username='$username'";
-						$stmt=$conn->query($sql);
-						while($result=$stmt->fetch(PDO::FETCH_ASSOC)){
-							echo $result['username'];
-						} 
+						echo $_SESSION['user_id'];
 					} else{
 						header("Location: login.php");
 					}
@@ -36,20 +30,57 @@
 				<a href="logout.php">Изход</a>
 			</div>
 			<div class="nav">
-				<a href="">Моят профил</a>
-				<a href="">Календар</a>
-				<a href="">Дисциплини</a>
-				<a href="">Моите дисциплини</a>
-				<a href="">Оценки</a>
+				<ul>
+					<li><a href="profilered.php">Моят профил</a></li>
+					<li><a href="">Календар</a></li>
+					<li><a href="">Дисциплини</a></li>
+						<?php 
+							echo '<ul>';
+								$stmt=$conn->prepare("SELECT short_name FROM courses");
+								$stmt->execute();
+								while($row=$stmt->fetch()){
+									echo '<li>'.$row['short_name'].'</li>';
+								}
+							echo '</ul>'; 
+						?>					
+					<li><a href="">Моите дисциплини</a></li>
+						<?php
+							$username=$_SESSION['user_id'];
+							echo '<ul>';
+							$stmt=$conn->prepare("SELECT courses.short_name FROM courses_students INNER JOIN courses WHERE student='$username' and courses_students.course_id=courses.id");
+							$stmt->execute();
+								while($row=$stmt->fetch()){
+									echo '<li>'.$row['short_name'].'</li>';
+								}
+							echo '</ul>';
+						?>
+					<li><a href="grades.php">Оценки</a></li>
+					</ul>
 			</div>
 			<div class="main">
 				<div class="publication">
 					<h1>Публикации</h1>
-				
+						<?php
+							echo '<p>';
+							$stmt=$conn->prepare("SELECT title, publication FROM publications");
+							$stmt->execute();
+								while($row=$stmt->fetch()){
+									echo '<h3>'.$row['title'].'</h3>';
+									echo '<p>'.$row['publication'].'</p>';
+								}
+							echo '<p>';
+						?>
 				</div>
 				<div class="news">
 					<h1>Новини</h1>
-					<?php ?>
+						<?php
+							$stmt=$conn->prepare("SELECT title, content FROM news");
+							$stmt->execute();
+								while($row=$stmt->fetch()){
+									echo '<h3>'.$row['title'].'</h3>';
+									echo '<p>'.$row['content'].'</p>';
+								}
+						?>
 				
 				</div>
 			</div>

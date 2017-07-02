@@ -11,7 +11,7 @@
         <meta charset ="utf-8">
         <meta name = "Description" content = "This web page is for students calendar. They can see their calendars, their lecturers and so on.">
         <meta name = "keywords" content = "Students, Calendar, Lecturers">
-    <meta name = "author" content = "Elica Venchova, Natalia Ignatova">
+		<meta name = "author" content = "Elica Venchova, Natalia Ignatova">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </head>
         <body>
@@ -44,7 +44,7 @@
                 if (isset($_POST['role'])) {
                     $userRoles = $_POST['role'];
                 }
-                $sysStmt = $conn->prepare("SELECT username FROM sys_users");
+                $sysStmt = $conn->prepare("SELECT username FROM sys_users WHERE username=?");
                 //if()
                 $nstmt = $conn->prepare("INSERT INTO sys_users (username, password, first_name, surname, last_name, title, adress, telefon_number, email, visiting_time, cabinet, rownumber, cathedral_id, study_program_id, adm_group, year_at_university, is_active, notes) VALUES (:username, :password, :first_name, :surname, :last_name, :title, :adress, :telefon_number, :email, :visiting_time, :cabinet, :rownumber, :cathedral_id, :study_program_id, :adm_group, :year_at_university, :is_active, :notes)");
                 if (!empty($input_user->getUsername()) && strlen($input_user->getUsername()) <= 80) {

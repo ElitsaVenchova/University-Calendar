@@ -18,13 +18,20 @@
 	position: fixed;
 	color:green;
 	border-right: solid grey 0.1px;
-	
+	text-transform: uppercase;
 }
 .nav a{
 	color:green;
+	cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
 }
-ul{
-	decoration:none;
+nav:hover ul{
+	display: block;
 }
 .nav a:visited{
   color: black;
@@ -39,6 +46,34 @@ ul{
 	
 }
 nav:hover ul{
+	display: block;
+}
+li:hover{
+	background-color:green;
+}
+ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li a{
+	display: block;
+}
+li >ul {
+	display: block;
+}
+.hidd{
+	display:block;
+	cursor: pointer;
+    padding: 18px;
+    width: 80%;
+    text-align: left;
+    transition: 0.4s;
+	color:black;
+	padding-left:40px;
+}
+#d:hover .con{
 	display: block;
 }
 div{

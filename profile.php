@@ -46,20 +46,24 @@
 						}
 					?>
                                     <li><a href="Calendar/ReserveEventCalendar.php">Календар</a></li>
-					<li><a href="">Дисциплини</a></li>
+					<li><a href="" id="d">Дисциплини</a></li>
+						<div class="con">
 						<?php 
-							echo '<ul>';
+							echo '<ul class="hidd">';
 								$stmt=$conn->prepare("SELECT short_name FROM courses");
 								$stmt->execute();
 								while($row=$stmt->fetch()){
 									echo '<li>'.$row['short_name'].'</li>';
 								}
 							echo '</ul>'; 
-						?>					
-					<li><a href="">Моите дисциплини</a></li>
+						?>		
+						</div>
+					
+					<li><a href="" id="md">Моите дисциплини</a></li>
+						<div class="con">
 						<?php
 							$username=$_SESSION['user_id'];
-							echo '<ul>';
+							echo '<ul class="hidd">';
 							$stmt=$conn->prepare("SELECT courses.short_name FROM courses_students INNER JOIN courses WHERE student='$username' and courses_students.course_id=courses.id");
 							$stmt->execute();
 								while($row=$stmt->fetch()){
@@ -67,6 +71,8 @@
 								}
 							echo '</ul>';
 						?>
+						</div>
+					
 					<li><a href="grades.php">Оценки</a></li>
 					</ul>
 			</div>

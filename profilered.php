@@ -71,7 +71,7 @@ if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2>Редактиране на профил</h2>
                 <form action="profilered.php" method="POST">
                     <label>Парола<span class="required">*</span> <input type="password" name="password"></label>
-                    <label>Адрес<span class="required">*</span><input type="text" name="address"></label>
+					<label>Адрес<span class="required">*</span><input type="text" name="address"></label>
                     <label>Телефонен номер<span class="required">*</span><input type="text" name="telefonnumber"></label>
                     <label>E-mail<span class="required">*</span><input type="email" name="e-mail"></label>
                     <div class="buttons"> <input type="submit"> </div>

@@ -45,15 +45,6 @@ if (isset($_GET['searchRooms']) && !empty($_GET['searchRooms'])) {
 $sql = "SELECT nrt.id, nrt.short_name, nrt.name, nrt.description, nrt.is_active FROM nom_Room_types nrt WHERE nrt.is_active = 'Y' order by nrt.name";
 $result = $conn->query($sql);
 $nomRoomTypes = array();
-while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $nomRoomType = new NomRoomTypes();
-    $nomRoomType->setId($row['id']);
-    $nomRoomType->setShortName($row['short_name']);
-    $nomRoomType->setName($row['name']);
-    $nomRoomType->setDescription($row['description']);
-    $nomRoomType->setIsActive($row['is_active']);
-    array_push($nomRoomTypes, $nomRoomType);
-}
 
 //Списък със залите
 $sql = "SELECT r.id, r.num, r.place, r.type_id, r.work_stations, r.description, r.is_active, nrt.id as room_type_id, nrt.name as room_type_name "

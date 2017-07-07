@@ -862,6 +862,10 @@ div.month {
         margin-bottom: -1px;
     }
 
+    #calendar li.today{
+		background: #D9E9EA;
+    }
+
     #calendar .date {
         float: none;
     }

@@ -1,5 +1,6 @@
 <?php
 include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php';
+include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomStudyPrograms.php';
 include '..'.DIRECTORY_SEPARATOR.'header.php';
 
 function save($conn, $post){

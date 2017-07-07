@@ -608,7 +608,7 @@ div.buttons input[type=button]:disabled {
 да излизат на един ред заедно с бутоните. Този стил трябва да бъде добавен на 
 полето(input/select/...), на div.buttons и на label. Също след текста, който 
 трябва да излиза над полето, трябва да се добави таг <br/>.*/
-.edit .inline-show {
+.edit .inlineshow {
     display: inline;
 }
 
@@ -836,6 +836,16 @@ div.month {
     color: #666;
 }
 
+#calendar .today {
+    background: #81B7BB;
+    color: #666;
+}
+
+#calendar .today.other-month {
+    background: #D9E9EA;
+    color: #666;
+}
+
 
 
 /*************Стиловете на календара за екрани до 768 px ширина*/
@@ -893,4 +903,14 @@ span.required {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================================ Стила на стрелките за навикация в календара*/
+img.fliped {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
 }

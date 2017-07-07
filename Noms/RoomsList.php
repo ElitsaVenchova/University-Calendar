@@ -1,6 +1,6 @@
 <?php
-include '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Noms' . DIRECTORY_SEPARATOR . 'NomStudyPrograms.php';
-include '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Noms' . DIRECTORY_SEPARATOR . 'NomDegrees.php';
+include '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Events' . DIRECTORY_SEPARATOR . 'Rooms.php';
+include '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Noms' . DIRECTORY_SEPARATOR . 'NomRoomTypes.php';
 include '..' . DIRECTORY_SEPARATOR . 'header.php';
 
 /**
@@ -24,7 +24,7 @@ function order($selectedCol) {
     if (isset($selectedCol) && !empty($selectedCol)) {
         return " order by " . $selectedCol . " ";
     } else {
-        return " order by nsp.id ";
+        return " order by r.id ";
     }
 }
 
@@ -51,23 +51,24 @@ if (isset($_GET) && isset($_GET['sortColName']) && !empty($_GET['sortColName']))
 $_SESSION['selectedCol'] = $selectedCol;
 $_SESSION['direction'] = $direction;
 
-$sql = "SELECT nsp.id, nsp.degree_id, nsp.short_name, nsp.name, nsp.description, nsp.is_active, nd.name degree_name FROM NOM_STUDY_PROGRAMS nsp JOIN NOM_DEGREES nd ON  nd.id = nsp.degree_id " . order($selectedCol) . $direction;
+$sql = "SELECT r.id, r.num, r.type_id, r.place, r.work_stations, r.description, r.is_active, nrt.name type_name FROM Rooms r JOIN nom_Room_types nrt ON  nrt.id = r.type_id " . order($selectedCol) . $direction;
 $result = $conn->query($sql);
-$nomStudyProgramsList = array();
+$rooms = array();
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $nomStudyProgram = new NomStudyPrograms();
-    $nomStudyProgram->setId($row['id']);
+    $room = new Rooms();
+    $room->setId($row['id']);
+    $room->setNum($row['num']);
+    $room->setPlace($row['place']);
 
-    $nomDegree = new NomDegrees();
-    $nomDegree->setId($row['degree_id']);
-    $nomDegree->setName($row['degree_name']);
-    $nomStudyProgram->setDegreeId($nomDegree);
+    $nomRoomType = new NomRoomTypes();
+    $nomRoomType->setId($row['type_id']);
+    $nomRoomType->setName($row['type_name']);
+    $room->setTypeId($nomRoomType);
 
-    $nomStudyProgram->setShortName($row['short_name']);
-    $nomStudyProgram->setName($row['name']);
-    $nomStudyProgram->setDescription($row['description']);
-    $nomStudyProgram->setIsActive($row['is_active']);
-    array_push($nomStudyProgramsList, $nomStudyProgram);
+    $room->setWorkStations($row['work_stations']);
+    $room->setDescription($row['description']);
+    $room->setIsActive($row['is_active']);
+    array_push($rooms, $room);
 }
 ?>
 <html>
@@ -79,7 +80,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         <script type="text/JavaScript" src="../scripts/UserJQueryMessageStyles.js"></script>
         <script type="text/JavaScript" src="../scripts/DatePicker.js"></script>
         <script type="text/javascript" src="../scripts/jquery-ui-1.12.1/jquery-ui.js"></script>
-        <title>Списък - Степени на образование</title>
+        <title>Списък - Стаи</title>
     </head>
     <body>
         <form name="nom_study_program_list_form" id='nom_study_program_list_form'>
@@ -93,24 +94,26 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             <table class="dataset">
                 <thead>
                     <tr>
-                        <th><a href="NomStudyProgramsEdit.php"><img src="../style/plus.png" title="Нов запис"  style="border: 0" height="16" width="16"></a></th>
+                        <th><a href="RoomsEdit.php"><img src="../style/plus.png" title="Нов запис"  style="border: 0" height="16" width="16"></a></th>
                         <th><a href="#" onclick="setOrder('id')">№ <?= isSortColumn('id', $selectedCol, $direction) ?></a></th>
-                        <th><a href="#" onclick="setOrder('degree_id')">Степен на образование <?= isSortColumn('degree_id', $selectedCol, $direction) ?></a></th>
-                        <th><a href="#" onclick="setOrder('short_name')">Код <?= isSortColumn('short_name', $selectedCol, $direction) ?></a></th>
-                        <th><a href="#" onclick="setOrder('name')">Име <?= isSortColumn('name', $selectedCol, $direction) ?></a></th>
+                        <th><a href="#" onclick="setOrder('type_name')">Вид <?= isSortColumn('type_name', $selectedCol, $direction) ?></a></th>
+                        <th><a href="#" onclick="setOrder('num')">Номер <?= isSortColumn('num', $selectedCol, $direction) ?></a></th>
+                        <th><a href="#" onclick="setOrder('place')">Място <?= isSortColumn('place', $selectedCol, $direction) ?></a></th>
+                        <th><a href="#" onclick="setOrder('work_stations')">Работни станции <?= isSortColumn('work_stations', $selectedCol, $direction) ?></a></th>
                         <th><a href="#" onclick="setOrder('description')">Описание <?= isSortColumn('description', $selectedCol, $direction) ?></a></th>
                         <th><a href="#" onclick="setOrder('is_active')">Активност <?= isSortColumn('is_active', $selectedCol, $direction) ?></a></th>
                     </tr>
                 </thead>
                 <tbody>
-<?php foreach ($nomStudyProgramsList as $val): ?>
+<?php foreach ($rooms as $val): ?>
                         <tr>
-                            <td><a href="NomStudyProgramsEdit.php?studyProgramId=<?= $val->getId() ?>"><img src="../style/edit.png" title="Редактиране"  style="border: 0"></a>
+                            <td><a href="RoomsEdit.php?roomId=<?= $val->getId() ?>"><img src="../style/edit.png" title="Редактиране"  style="border: 0"></a>
                             </td>
                             <td><?= $val->getId() ?> </td>
-                            <td><?= $val->getDegreeId()->getName() ?> </td>
-                            <td><?= $val->getShortName() ?> </td>
-                            <td><?= $val->getName() ?> </td>
+                            <td><?= $val->getTypeId()->getName() ?> </td>
+                            <td><?= $val->getNum() ?> </td>
+                            <td><?= $val->getPlace() ?> </td>
+                            <td><?= $val->getWorkStations() ?> </td>
                             <td><?= $val->getDescription() ?> </td>
                             <td><?= $val->getIsActiveTxt() ?> </td>
                         </tr>

@@ -41,6 +41,7 @@
 							} else{
 								echo '<li><a href="profilered.php">Моят профил</a></li>';
 								echo '<li><a href="registration.php">Редакция на профил</a></li>';
+								echo '<li><a href="Noms/Nomenclatures.php">Редакция на профил</a></li>';
 								
 							}
 						}

@@ -1,0 +1,95 @@
+.head{
+	width:100%;
+	margin:0% 0% 0% 85%;
+	padding: 0px 30px;
+	color:black;
+	font-size: 20px;
+}
+.head a{
+	padding:0px 10px;
+	color: green;
+}
+.nav{
+	width:20%;
+	height:100%;
+	margin:0% 80% 0% 2%;
+	display:block;
+	left:0%;
+	position: fixed;
+	color:green;
+	border-right: solid grey 0.1px;
+	text-transform: uppercase;
+}
+.nav a{
+	color:green;
+	cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+nav:hover ul{
+	display: block;
+}
+.nav a:visited{
+  color: black;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.main{
+	width:60%;
+	margin:0% 2% 0% 30%;
+	display:block;
+	
+	
+}
+nav:hover ul{
+	display: block;
+}
+li:hover{
+	background-color:green;
+}
+ul{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li a{
+	display: block;
+}
+li >ul {
+	display: block;
+}
+.hidd{
+	display:block;
+	cursor: pointer;
+    padding: 18px;
+    width: 80%;
+    text-align: left;
+    transition: 0.4s;
+	color:black;
+	padding-left:40px;
+}
+#d:hover .con{
+	display: block;
+}
+div{
+	height: auto;
+	font-size: 18px;
+}
+div p{
+  line-height: 1.2;
+  letter-spacing: 1px;
+	text-indent: 50px;
+}
+p::first-letter{
+	font-weight: bold;
+}
+h3,h4{
+  color:green;
+  text-align: inherit;
+  text-decoration: underline;
+}

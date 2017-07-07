@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS nom_Semester_types(
 	CONSTRAINT nom_Semester_types_name_uk UNIQUE(name)
 ) COMMENT = 'Номенклатура на типовете семестри (летен, зимен, всеки семестер и т.н.)';
 
-CREATE TABLE IF NOT EXISTS nom_Session_typesHide(
+CREATE TABLE IF NOT EXISTS nom_Session_types(
 	id MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'UNIQUE ID',
 	short_name VARCHAR (80) NOT NULL COMMENT 'Кратко наименование',
 	name VARCHAR (255) NOT NULL COMMENT 'Пълно наименование',
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS News(
 	FOREIGN KEY News_publisher_fk (publisher) REFERENCES sys_users(username)
 ) COMMENT = 'Новини';
 
-CREATE TABLE IF NOT EXISTS nom_Room_typesHide(
+CREATE TABLE IF NOT EXISTS nom_Room_types(
 	id MEDIUMINT NOT NULL AUTO_INCREMENT COMMENT 'UNIQUE ID',
 	short_name VARCHAR (80) NOT NULL COMMENT 'Кратко наименование',
 	name VARCHAR (255) NOT NULL COMMENT 'Пълно наименование',
@@ -383,3 +383,34 @@ INSERT INTO sys_users_roles(username, role)
 	values ('aadmin','ADMIN');
 INSERT INTO sys_users_roles(username, role)
 	values ('ssekretar','SECRETARY');
+
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '314', 'ФМИ', 30, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '200', 'ФМИ', 200, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '325', 'ФМИ', 150, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '02', 'ФМИ', 50, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '01', 'ФМИ', 70, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '09', 'ФМИ', 15, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '321', 'ФМИ', 35, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '320', 'ФМИ', 35, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (1, '107', 'ФМИ', 35, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '307', 'ФМИ', 20, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '405', 'ФМИ', 20, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (3, '500', 'ФМИ', 40, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '210', 'ФХФ', 250, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '130', 'ФХФ', 200, '', 'Y');
+insert into Rooms (type_id, num, place, work_stations, description, is_active)
+VALUES (2, '207', 'ФзФ A', 90, '', 'Y');

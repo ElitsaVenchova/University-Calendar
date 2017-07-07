@@ -49,7 +49,7 @@ if(isset($_GET) && isset($_GET['sortColName']) && !empty($_GET['sortColName'])){
 $_SESSION['selectedCol']=$selectedCol;
 $_SESSION['direction']=$direction;
 
-$sql = "SELECT ncc.id, ncc.short_name, ncc.name, ncc.description, ncc.is_active FROM NOM_COURSE_CATEGORIES ncc ".order($selectedCol).$direction;
+$sql = "SELECT ncc.id, ncc.short_name, ncc.name, ncc.description, ncc.is_active FROM nom_Course_categories ncc ".order($selectedCol).$direction;
 $result = $conn->query($sql);
 $nomCourseCategoriesList = array();
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {

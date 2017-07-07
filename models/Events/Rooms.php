@@ -2,7 +2,7 @@
 class Rooms {
 	private $id;
 	private $num;
-	private $palce;
+	private $place;
 	private $typeId;
 	private $workStations;
 	private $description;
@@ -26,12 +26,12 @@ class Rooms {
 		$this->num = $num;
 	}
 
-	public function getPalce(){
-		return $this->palce;
+	public function getPlace(){
+		return $this->place;
 	}
 
-	public function setPalce($palce){
-		$this->palce = $palce;
+	public function setPlace($place){
+		$this->place = $place;
 	}
 
 	public function getTypeId(){
@@ -64,6 +64,10 @@ class Rooms {
 
 	public function setIsActive($isActive){
 		$this->isActive = $isActive;
+	}
+	
+	public function getIsActiveTxt(){
+		return $this->isActive != null && strcmp ( $this->isActive , "Y" ) == 0 ? "Да" : "Не";
 	}
 }
 ?>

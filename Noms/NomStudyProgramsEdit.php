@@ -1,5 +1,6 @@
 <?php
 include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomDegrees.php';
+include '..'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Noms'.DIRECTORY_SEPARATOR.'NomStudyPrograms.php';
 include '..'.DIRECTORY_SEPARATOR.'header.php';
 
 function save($conn, $post){
@@ -81,7 +82,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
                 function checkSubmit(e)
                 {
                     var v = document.forms['nom_degrees_edit_form'];
-                    if (e && e.keyCode === 13)
+                    if (e.which === 13 && !e.altKey && !e.ctrlKey && !e.shiftKey)
                     {
                         updateRow();
                     }
@@ -106,8 +107,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
 			</script>
 			<div class="edit" id="userInfo">
 				<div class="edit_form">
-					<label>№ <input readonly type="text" name="id" id="id" readonly required="Y" value="<?= $currStudyProgram->getId()?>"/> </label>
-					<label>Степен на образование <select name="degreeId" id="degreeId" required="Y">
+					<label>№<span class="required">*</span> <input readonly type="text" name="id" id="id" readonly required="Y" value="<?= $currStudyProgram->getId()?>"/> </label>
+					<label>Степен на образование<span class="required">*</span> <select name="degreeId" id="degreeId" required="Y">
 						<option></option>
 						<?php foreach($nomDegreesList as $val): ?>
 						<option value="<?= $val->getId() ?>" 
@@ -116,10 +117,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
 						</option>
 					<?php endforeach; ?>
 					</select> </label>
-					<label>Код <input type="text" id="shortName" required="Y" name="shortName" value="<?= $currStudyProgram->getShortName()?>"/> </label>
+					<label>Код<span class="required">*</span> <input type="text" id="shortName" required="Y" name="shortName" value="<?= $currStudyProgram->getShortName()?>"/> </label>
 					<label>Име <input type="text" id="name" name="name" required="Y" value="<?= $currStudyProgram->getName()?>"/> </label>
 					<label>Описание <input type="text" id="description" name="description" value="<?= $currStudyProgram->getDescription()?>"/> </label>
-					<label>Активност <select name="isActive" id="isActive" required="Y">
+					<label>Активност<span class="required">*</span> <select name="isActive" id="isActive" required="Y">
 						<option></option>
 						<option value='Y' <?= $currStudyProgram->getIsActive() != null && strcmp ($currStudyProgram->getIsActive() , "Y" ) == 0 ? "selected" :"" ?>>Да</option>
 						<option value='N' <?= $currStudyProgram->getIsActive() != null && strcmp ( $currStudyProgram->getIsActive() , "N" ) == 0 ? "selected" : "" ?>>Не</option>

@@ -577,11 +577,38 @@ div.buttons input[type=button]:disabled {
     white-space: pre-wrap;
 }
 
+.edit .inline-show input[type="text"],
+.edit .inline-show input[type="date"],
+.edit .inline-show input[type="datetime"],
+.edit .inline-show input[type="email"],
+.edit .inline-show input[type="number"],
+.edit .inline-show input[type="search"],
+.edit .inline-show input[type="time"],
+.edit .inline-show input[type="url"],
+.edit .inline-show input[type="password"],
+.edit .inline-show select {
+    width: 20%;
+}
+
+.edit .common input[type="text"]:before,
+.edit .common input[type="date"]:before,
+.edit .common input[type="datetime"]:before,
+.edit .common input[type="email"]:before,
+.edit .common input[type="number"]:before,
+.edit .common input[type="search"]:before,
+.edit .common input[type="time"]:before,
+.edit .common input[type="url"]:before,
+.edit .common input[type="password"]:before,
+.edit .common select:before {
+    content: '\A'; 
+    white-space: pre-wrap;
+}
+
 /***********************Стила на полетата във формата за редакция, който трябва
 да излизат на един ред заедно с бутоните. Този стил трябва да бъде добавен на 
 полето(input/select/...), на div.buttons и на label. Също след текста, който 
 трябва да излиза над полето, трябва да се добави таг <br/>.*/
-.edit .inline-show {
+.edit .inlineshow {
     display: inline;
 }
 
@@ -710,124 +737,138 @@ span.week-name {
 
 /***************************************************Стиловете на календара*/
 #calendar-main{
-  width: 80%;
-  margin:0 auto;
+    width: 80%;
+    margin:0 auto;
 }
 div.month {
-  text-align: center;
+    text-align: center;
 }
 
 #calendar {
-  width: 100%;
+    width: 100%;
 }
 
 #calendar a {
-  color: #8e352e;
-  text-decoration: none;
+    color: #8e352e;
+    text-decoration: none;
 }
 
 #calendar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 #calendar li {
-  display: block;
-  float: left;
-  width: 14.345%;
-  padding: 3px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  margin-right: -1px;
-  margin-bottom: -1px;
+    display: block;
+    float: left;
+    width: 14.345%;
+    padding: 3px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    margin-right: -1px;
+    margin-bottom: -1px;
 }
 
 #calendar ul.weekdays {
-  height: 40px;
-  background: #8e352e;
+    height: 40px;
+    background: #8e352e;
 }
 
 #calendar ul.weekdays li {
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 20px;
-  border: none !important;
-  padding: 10px 6px;
-  color: #fff;
-  font-size: 13px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 20px;
+    border: none !important;
+    padding: 10px 6px;
+    color: #fff;
+    font-size: 13px;
 }
 
 #calendar .days li {
-  height: 80px;
+    height: 80px;
 }
 
 #calendar .days li:hover {
-  background: #d3d3d3;
+    background: #d3d3d3;
 }
 
 #calendar .date {
-  text-align: center;
-  margin-bottom: 5px;
-  padding: 4px;
-  background: #333;
-  color: #fff;
-  width: 20px;
-  border-radius: 50%;
-  float: right;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 4px;
+    background: #333;
+    color: #fff;
+    width: 20px;
+    border-radius: 50%;
+    float: right;
 }
 
 #calendar .event {
-  clear: both;
-  display: block;
-  font-size: 10px;
-  border-radius: 4px;
-  padding: 3px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  line-height: 10px;
-  background: #e4f2f2;
-  border: 1px solid #b5dbdc;
-  color: #009aaf;
-  text-decoration: none;
+    clear: both;
+    display: block;
+    font-size: 10px;
+    border-radius: 4px;
+    padding: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    line-height: 10px;
+    background: #e4f2f2;
+    border: 1px solid #b5dbdc;
+    color: #009aaf;
+    text-decoration: none;
 }
 
 #calendar .event-desc {
-  color: #666;
-  margin: 1px 0 3px 0;
-  text-decoration: none;
-  display: inline;
+    color: #666;
+    margin: 1px 0 3px 0;
+    text-decoration: none;
+    display: inline;
 }
 
 #calendar .event-time {
-  display: inline;
+    display: inline;
 }
 
 #calendar .other-month {
-  background: #f5f5f5;
-  color: #666;
+    background: #f5f5f5;
+    color: #666;
+}
+
+#calendar .today {
+    background: #81B7BB;
+    color: #666;
+}
+
+#calendar .today.other-month {
+    background: #D9E9EA;
+    color: #666;
 }
 
 
 
 /*************Стиловете на календара за екрани до 768 px ширина*/
 @media (max-width: 768px) {
-  #calendar .weekdays, #calendar .other-month {
-    display: none;
-  }
+    #calendar .weekdays, #calendar .other-month {
+        display: none;
+    }
 
-  #calendar li {
-    height: auto !important;
-    border: 1px solid #ededed;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: -1px;
-  }
+    #calendar li {
+        height: auto !important;
+        border: 1px solid #ededed;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: -1px;
+    }
 
-  #calendar .date {
-    float: none;
-  }
+    #calendar li.today{
+		background: #D9E9EA;
+    }
+
+    #calendar .date {
+        float: none;
+    }
 }
 
 /* ================================================================ Стила на * на задължителни полета */
@@ -838,4 +879,42 @@ span.required {
     font-weight: bold;
     width: 30%;
     text-align:right;
+}
+.loginform{
+	width:40%;
+	margin: 0% 0% 0% 20%; 
+	position:center;
+	
+}
+.loginform img{
+	display:block;
+	position:center;
+}
+.editl{
+    width: 40%;
+    min-width: 340px;;
+    display: inline-block;
+    vertical-align: top;
+    padding: 7px;
+    background: #F8F8F8;
+    margin-bottom: 15px;
+	
+
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================================ Стила на стрелките за навикация в календара*/
+img.fliped {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
 }

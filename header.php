@@ -3,7 +3,7 @@
 
 //TODO: Това трябва да се изтрие, защото ще се създава след успешен логин
 $host="localhost";
-$db="universitycalender";
+$db="UniversityCalender";
 $user="root";
 $pass="";
 try {
